@@ -1,0 +1,34 @@
+$map-loop: (
+height-per: (classname:'height-per', unit:'%', property:'height', dimensions:(1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100)),
+height-vh: (classname:'height-vh', unit:'vh', property:'height', dimensions:(1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100)),
+width-per: (classname:'width-per', unit:'%', property:'width', dimensions:(1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100)),
+width-vw: (classname:'width-vw', unit:'vw', property:'width', dimensions:(1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100)),
+mt: (classname:'mt', unit:'px', property:'margin-top', dimensions:(1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100)),
+mb: (classname:'mb', unit:'px', property:'margin-bottom', dimensions:(1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100)),
+mr: (classname:'mr', unit:'px', property:'margin-right', dimensions:(1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100)),
+ml: (classname:'ml', unit:'px', property:'margin-left', dimensions:(1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100)),
+mt-per: (classname:'mt-per', unit:'%', property:'margin-top', dimensions:(1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100)),
+mb-per: (classname:'mb-per', unit:'%', property:'margin-bottom', dimensions:(1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100)),
+mr-per: (classname:'mr-per', unit:'%', property:'margin-right', dimensions:(1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100)),
+ml-per: (classname:'ml-per', unit:'%', property:'margin-left', dimensions:(1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100)),
+pt: (classname:'pt', unit:'px', property:'padding-top', dimensions:(1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100)),
+pb: (classname:'pb', unit:'px', property:'padding-bottom', dimensions:(1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100)),
+pr: (classname:'pr', unit:'px', property:'padding-right', dimensions:(1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100)),
+pl: (classname:'pl', unit:'px', property:'padding-left', dimensions:(1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100)),
+pt-per: (classname:'pt-per', unit:'%', property:'padding-top', dimensions:(1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100)),
+pb-per: (classname:'pb-per', unit:'%', property:'padding-bottom', dimensions:(1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100)),
+pr-per: (classname:'pr-per', unit:'%', property:'padding-right', dimensions:(1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100)),
+pl-per: (classname:'pl-per', unit:'%', property:'padding-left', dimensions:(1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100)),
+);
+
+
+@each $instance, $class in $map-loop {
+  $classname: map-get($class, classname);
+  $unit: map-get($class, unit);
+  $property: map-get($class, property);
+  @each $dim in map-get($class, dimensions) {
+    .#{$classname}-#{$dim} {
+        #{$property}: #{$dim}#{$unit};
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "app-name": "empatica-frontend",
+  "paths": {
+    "molecules": "./src/components/molecules",
+    "pages": "./src/components/page"
+  },
+  "configuration": {
+    "molecule_prefix": "emp",
+    "include_etoe": true,
+    "include_spec": false,
+    "include_md_reader": false
+  },
+  "secondary-builds": {
+    "templates-folder": "templates",
+    "folder-builds": "builds",
+    "builds": [
+      {
+        "type": "components-build",
+        "tmp-folder": "empatica-frontend-components-build",
+        "folder-to-remove": [
+          "src/components/app",
+          "src/components/page",
+          "src/components/markdown-reader"
+        ],
+        "components-to-exclude": [],
+        "elements-to-copy": [
+          "src",
+          ".editorconfig",
+          ".gitignore",
+          ".prettierrc",
+          "fl-stencil-config.json",
+          "LICENSE",
+          "stencil.config.output-targets.json",
+          "fl-dynamic-builds.js",
+          "fl-stencil-env-chooser.js",
+          "fl-stencil-md-reader.js",
+          "README.md",
+          "tsconfig.json",
+          "tslint.json"
+        ],
+        "files-built-to-copy": ["package.json", "dist", "loader"]
+      }
+    ]
+  }
+}

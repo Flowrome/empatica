@@ -1,0 +1,274 @@
+const fs = require('fs');
+const fsx = require('fs-extra');
+const rimraf = require('rimraf');
+const glob = require('glob');
+const shell = require('shelljs');
+const ora = require('ora');
+
+const pathDivider = process.platform === 'win32' ? '\\' : '/';
+const basePath = `.${pathDivider}`;
+const currentFolderName = process
+  .cwd()
+  .split(pathDivider)
+  .pop();
+
+const flConfig = fs.existsSync(`${basePath}fl-stencil-config.json`)
+  ? JSON.parse(fs.readFileSync(`${basePath}fl-stencil-config.json`, 'UTF-8'))
+  : null;
+
+let buildConfig = {};
+let currentBuild = 0;
+
+const package = fs.readFileSync(`${basePath}package.json`, 'UTF-8');
+const packageName = JSON.parse(package).name;
+
+function startProcess() {
+  cleanBuildFolder();
+  startCreatingBuild();
+}
+
+function startCreatingBuild() {
+  if (currentBuild < buildConfig.builds.length) {
+    const build = buildConfig.builds[currentBuild];
+    createPaths(build);
+    copyElements(build);
+    rebuildLocalPackages(build);
+    removeFolders(build);
+    startGlobComponents(build, componentsToRemovePath => {
+      removeComponents(componentsToRemovePath, build);
+      startShell(build, () => {
+        currentBuild = currentBuild + 1;
+        startCreatingBuild();
+      });
+    });
+  }
+}
+
+function cleanBuildFolder() {
+  if (!fs.existsSync(`${buildConfig.folderBuilds}`)) {
+    fs.mkdirSync(`${buildConfig.folderBuilds}`);
+  } else {
+    rimraf.sync(`${buildConfig.folderBuilds}`);
+    fs.mkdirSync(`${buildConfig.folderBuilds}`);
+  }
+}
+
+function createPaths(build) {
+  if (!fs.existsSync(`..${pathDivider}${build.tmpFolder}`)) {
+    fs.mkdirSync(`..${pathDivider}${build.tmpFolder}`);
+  } else {
+    rimraf.sync(`..${pathDivider}${build.tmpFolder}`);
+    fs.mkdirSync(`..${pathDivider}${build.tmpFolder}`);
+  }
+  if (
+    !fs.existsSync(`${buildConfig.folderBuilds}${pathDivider}${build.type}`)
+  ) {
+    fs.mkdirSync(`${buildConfig.folderBuilds}${pathDivider}${build.type}`);
+  } else {
+    rimraf.sync(`${buildConfig.folderBuilds}${pathDivider}${build.type}`);
+    fs.mkdirSync(`${buildConfig.folderBuilds}${pathDivider}${build.type}`);
+  }
+}
+
+function copyElements(build) {
+  build.elementsToCopy.map(elem => {
+    const baseDirectory = `..${pathDivider}${build.tmpFolder}${pathDivider}`;
+    const toDirectory = `${baseDirectory}${elem
+      .replace(`${buildConfig.templatesFolder}${pathDivider}`, '')
+      .replace(`${build.type}${pathDivider}`, '')}`;
+    try {
+      fsx.copySync(elem, toDirectory);
+    } catch (err) {
+      if (err) {
+        console.error('FLCLI: COPYING: ERROR', elem, err);
+      }
+    }
+  });
+  console.log('FLCLI: COPYING: SUCCESS');
+}
+
+function removeFolders(build) {
+  build.folderToRemove.map(elem => {
+    const baseDirectory = `..${pathDivider}${build.tmpFolder}${pathDivider}${elem}`;
+    try {
+      rimraf.sync(baseDirectory);
+    } catch (err) {
+      console.error('FLCLI: REMOVING-FOLDER: ERROR', elem, err);
+    }
+  });
+  console.log('FLCLI: REMOVING-FOLDER: SUCCESS');
+}
+
+function startGlobComponents(build, cb) {
+  glob(
+    `${basePath}src${pathDivider}components${pathDivider}molecules${pathDivider}**${pathDivider}*.tsx`,
+    (err, data) => {
+      if (err) {
+        console.error('FLCLI: READING-MOLECULES: ERROR', err);
+        return;
+      } else if (data) {
+        const componentsToRemovePath = [];
+        data.map(path => {
+          const file = fs.readFileSync(path, 'UTF-8');
+          const regexTag = /tag:.*$/gm;
+          const regexName = /['|"].*["|']/gm;
+          const name = ((file.match(regexTag) || [''])[0].match(regexName) || [
+            '',
+          ])[0].replace(/\'/g, '');
+          if (build.componentsToExclude.indexOf(name) > -1) {
+            const p = path.split('/');
+            p.pop();
+            componentsToRemovePath.push(p.join('/'));
+          }
+        });
+        cb(componentsToRemovePath);
+      }
+    },
+  );
+}
+
+function removeComponents(arrayToRemove, build) {
+  arrayToRemove.map(elem => {
+    const baseDirectory = `..${pathDivider}${build.tmpFolder}${pathDivider}${elem}`;
+    try {
+      rimraf.sync(baseDirectory);
+    } catch (err) {
+      console.error('FLCLI: REMOVING-COMPONENTS: ERROR', elem, err);
+    }
+  });
+  console.log('FLCLI: REMOVING-COMPONENTS: SUCCCESS');
+}
+
+function startShell(build, cb) {
+  const spinner = ora(
+    `FLCLI: INSTALLING DEPS: ${build.type} (it will require some time)` + '\n',
+  ).start();
+  shell.cd(`..${pathDivider}${build.tmpFolder}`);
+  shell.exec('npm i', null, () => {
+    spinner.text =
+      `FLCLI: BUILDING: ${build.type} (it will require some time)` + '\n';
+    shell.exec('npm run build-prod', null, () => {
+      console.log(`FLCLI: BUILT: ${build.type}`);
+      shell.cd(`..${pathDivider}${currentFolderName}`);
+      startCopyingFundamentals(build);
+      spinner.stop();
+      cb();
+    });
+  });
+}
+
+function startCopyingFundamentals(build) {
+  build.filesBuiltToCopy.map(elem => {
+    const fullPathElem = `..${pathDivider}${build.tmpFolder}${pathDivider}${elem}`;
+    fsx.copySync(
+      fullPathElem,
+      `${basePath}${buildConfig.folderBuilds}${pathDivider}${build.type}${pathDivider}${elem}`,
+    );
+  });
+  rimraf.sync(`..${pathDivider}${build.tmpFolder}`);
+}
+
+if (flConfig) {
+  const config = flConfig['secondary-builds'];
+  buildConfig = {
+    templatesFolder:
+      basePath + config['templates-folder'].replace(/\//g, `${pathDivider}`),
+    folderBuilds:
+      basePath + config['folder-builds'].replace(/\//g, `${pathDivider}`),
+    builds: [
+      ...config.builds.map(build => ({
+        type: build.type,
+        tmpFolder:
+          basePath + build['tmp-folder'].replace(/\//g, `${pathDivider}`),
+        folderToRemove: [
+          ...build['folder-to-remove'].map(
+            fd => basePath + fd.replace(/\//g, `${pathDivider}`),
+          ),
+        ],
+        componentsToExclude: build['components-to-exclude'],
+        elementsToCopy: [
+          ...build['elements-to-copy'].map(
+            fd => basePath + fd.replace(/\//g, `${pathDivider}`),
+          ),
+        ],
+        filesBuiltToCopy: [
+          ...build['files-built-to-copy'].map(
+            fd => basePath + fd.replace(/\//g, `${pathDivider}`),
+          ),
+        ],
+      })),
+    ],
+  };
+  startProcess();
+} else {
+  process.exit();
+}
+
+function rebuildLocalPackages(build) {
+  const buildName = build.type;
+  const baseDirectory = `..${pathDivider}${build.tmpFolder}${pathDivider}`;
+  [
+    rebuildPackageJson(buildName),
+    rebuildStencilConfig(buildName),
+    rebuildLocalStencilConfig(buildName),
+    rebuildIndexHTML(buildName),
+    rebuildOutputTargets(),
+  ].map(elem => {
+    fs.writeFileSync(`${baseDirectory}${elem.fileName}`, elem.file);
+  });
+  console.log('FLCLI: REBUILD LOCAL PACKAGES: SUCCESS');
+}
+
+function rebuildPackageJson(buildName) {
+  const regex = new RegExp(`${packageName}`, 'g');
+  const renamedPackage = JSON.parse(
+    package.replace(regex, `${packageName}-${buildName}`),
+  );
+  return { file: JSON.stringify(renamedPackage), fileName: 'package.json' };
+}
+
+function rebuildStencilConfig(buildName) {
+  const stencil = fs.readFileSync(`${basePath}stencil.config.ts`, 'UTF-8');
+  const regex = new RegExp(`${packageName}`, 'g');
+  const renamedStencil = stencil.replace(regex, `${packageName}-${buildName}`);
+  return { file: renamedStencil, fileName: 'stencil.config.ts' };
+}
+
+function rebuildLocalStencilConfig(buildName) {
+  const localStencil = fs.readFileSync(
+    `${basePath}fl-stencil-config.json`,
+    'UTF-8',
+  );
+  const regex = new RegExp(`${packageName}`, 'g');
+  const renamedStencilLocal = JSON.parse(
+    localStencil.replace(regex, `${packageName}-${buildName}`),
+  );
+  return {
+    file: JSON.stringify(renamedStencilLocal),
+    fileName: 'fl-stencil-config.json',
+  };
+}
+
+function rebuildOutputTargets() {
+  const outputTargets = fs.readFileSync(
+    `${basePath}stencil.config.output-targets.json`,
+    'UTF-8',
+  );
+  const renamedOutputTargets = JSON.parse(outputTargets).filter(
+    target => target === 'dist',
+  );
+  return {
+    file: JSON.stringify(renamedOutputTargets),
+    fileName: 'stencil.config.output-targets.json',
+  };
+}
+
+function rebuildIndexHTML(buildName) {
+  const html = fs.readFileSync(
+    `${basePath}src${pathDivider}index.html`,
+    'UTF-8',
+  );
+  const regex = new RegExp(`${packageName}`, 'g');
+  const renamedIndexHtml = html.replace(regex, `${packageName}-${buildName}`);
+  return { file: renamedIndexHtml, fileName: `src${pathDivider}index.html` };
+}

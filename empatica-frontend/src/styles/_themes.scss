@@ -1,0 +1,28 @@
+$theme: (
+  white: (
+    primary: #fff,
+    secondary: #f1f1f1,
+    tertiary: #eee
+  ),
+  gray: (
+    light: #edeff0,
+    dark: #707070
+  ),
+  primary: (
+    red: #bc204b,
+    blue: #262730
+  ),
+  black: (
+    primary: #000,
+    secondary: #212121,
+    tertiary: #333
+  )
+);
+
+@function color($keys...) {
+  $map: $theme;
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}

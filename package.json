@@ -1,0 +1,16 @@
+{
+  "name": "empatica",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "concurrently \"cd empatica-frontend && npm i\"",
+    "start": "concurrently \"cd empatica-frontend && npm start\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^5.0.2"
+  }
+}

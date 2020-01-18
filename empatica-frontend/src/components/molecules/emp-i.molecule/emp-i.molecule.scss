@@ -1,0 +1,25 @@
+// emp-i.molecule styles
+:host,
+emp-i-molecule {
+  @import './icons';
+  i {
+    cursor: default;
+    height: var(--i-height);
+    line-height: calc(var(--i-height) + 2px);
+    width: var(--i-width);
+    color: var(--i-color);
+    font-size: var(--i-font-size);
+    &.pointer {
+      cursor: pointer;
+    }
+    &.hoverized {
+      padding: size(4px);
+      border: 2px solid transparent;
+      border-radius: 50%;
+      transition: 0.15s;
+      &:hover {
+        border-color: var(--i-color);
+      }
+    }
+  }
+}

@@ -1,0 +1,115 @@
+// emp-article.molecule styles
+:host,
+emp-article-molecule {
+  .article {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: row wrap;
+    .description-container {
+      width: 50%;
+      @include mq-breakpoint-s() {
+        width: 100%;
+      }
+      @include mq-breakpoint-m() {
+        width: 100%;
+      }
+    }
+    .product-container {
+      height: 100%;
+      width: 50%;
+      position: relative;
+      padding: size(20px) 0;
+      overflow: hidden;
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: auto;
+        z-index: 1;
+        background-color: var(--emp-article-hover-bg);
+        transition: 0.2s;
+        opacity: 0;
+        width: size(310px);
+        height: 100%;
+        border-radius: 4px;
+        cursor: pointer;
+        @include mq-breakpoint-s() {
+          right: 0;
+          left: 0;
+          margin: 0 auto;
+        }
+        @include mq-breakpoint-m() {
+          right: 0;
+          left: 0;
+          margin: 0 auto;
+        }
+      }
+      &::after {
+        cursor: pointer;
+        content: 'Check gallery';
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: size(310px);
+        height: size(58px);
+        bottom: -#{size(58px)};
+        z-index: 2;
+        opacity: 0;
+        transition: 0.2s;
+        @include paragraph();
+        right: 0;
+        left: auto;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        background-color: var(--emp-article-link-bg);
+        color: var(--emp-article-link-color);
+        @include mq-breakpoint-s() {
+          right: 0;
+          left: 0;
+          margin: 0 auto;
+        }
+        @include mq-breakpoint-m() {
+          right: 0;
+          left: 0;
+          margin: 0 auto;
+        }
+      }
+      &:hover {
+        &::before {
+          opacity: 1;
+        }
+        &::after {
+          opacity: 1;
+          bottom: 0;
+        }
+      }
+      img {
+        width: size(270px);
+        margin-right: 20px;
+        margin-left: auto;
+        display: block;
+      }
+      @include mq-breakpoint-s() {
+        width: 100%;
+        img {
+          margin: 0 auto;
+          display: block;
+        }
+      }
+      @include mq-breakpoint-m() {
+        width: 100%;
+        img {
+          margin: 0 auto;
+          display: block;
+        }
+      }
+    }
+    .footer {
+      width: 100%;
+    }
+  }
+}

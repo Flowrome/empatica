@@ -1,0 +1,7 @@
+// emp-button.molecule styles
+:root {
+    --emp-button-primary-color: #{color(primary, red)};
+    --emp-button-gray-dark-color: #{color(gray, dark)};
+    --emp-button-gray-light-color: #{color(gray, light)};
+    --emp-button-white-color: #{color(white, primary)};
+}

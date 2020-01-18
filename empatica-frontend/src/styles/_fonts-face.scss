@@ -1,0 +1,19 @@
+@import './icons';
+
+$fonts-path: '../assets/fonts';
+$fonts-lato: 'Lato-Regular';
+$fonts-apex: 'ApexNew-Book';
+
+@font-face {
+  font-family: 'Lato';
+  src: url('#{$fonts-path}/#{$fonts-lato}.eot') format('embedded-opentype'),
+    url('#{$fonts-path}/#{$fonts-lato}.woff') format('woff'),
+    url('#{$fonts-path}/#{$fonts-lato}.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Apex';
+  src: url('#{$fonts-path}/#{$fonts-apex}.eot') format('embedded-opentype'),
+    url('#{$fonts-path}/#{$fonts-apex}.woff') format('woff'),
+    url('#{$fonts-path}/#{$fonts-apex}.ttf') format('truetype');
+}

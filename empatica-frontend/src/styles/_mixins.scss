@@ -1,0 +1,44 @@
+@mixin default-font() {
+  font-family: 'Lato', monospace;
+  font-weight: 400;
+}
+@mixin mq-breakpoint-s {
+  @media screen and (max-width: 767px) {
+    @content;
+  }
+}
+@mixin mq-breakpoint-m {
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    @content;
+  }
+}
+@mixin mq-breakpoint-l {
+  @media screen and (min-width: 992px) and (max-width: 1366px) {
+    @content;
+  }
+}
+@mixin mq-breakpoint-xl {
+  @media screen and (min-width: 1366px) {
+    @content;
+  }
+}
+@mixin title {
+  font-family: 'Apex', monospace;
+  font-size: size(42px);
+  line-height: size(42px);
+}
+@mixin subtitle {
+  font-family: 'Apex', monospace;
+  font-size: size(32px);
+  line-height: size(32px);
+}
+@mixin paragraph {
+  font-family: 'Lato', monospace;
+  font-size: size(18px);
+  line-height: size(18px);
+}
+@mixin paragraph-min {
+  font-family: 'Lato', monospace;
+  font-size: size(12px);
+  line-height: size(12px);
+}

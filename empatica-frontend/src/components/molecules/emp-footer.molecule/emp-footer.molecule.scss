@@ -1,0 +1,36 @@
+// emp-footer.molecule styles
+:host,
+emp-footer-molecule {
+  @include default-font();
+  .first-line,
+  .second-line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: size(56px);
+    padding: 0 size(10px);
+    p {
+      @include paragraph-min();
+      color: var(--emp-footer-link-gray-color);
+      @include mq-breakpoint-s() {
+        text-align: center;
+      }
+    }
+    a {
+      color: var(--emp-footer-link-gray-color);
+      text-decoration: none;
+      transition: 0.15s;
+      margin-right: size(102px);
+      &:last-child {
+        margin-right: 0;
+      }
+      @include paragraph();
+      &:hover {
+        color: var(--emp-footer-link-primary-color);
+      }
+    }
+  }
+  .first-line {
+    border-bottom: 1px solid var(--emp-footer-divider-color);
+  }
+}

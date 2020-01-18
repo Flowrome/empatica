@@ -1,0 +1,113 @@
+:root {
+  font-size: 62.5%;
+  @include default-font();
+}
+
+.container-fluid {
+  margin: 0 auto;
+  width: 100%;
+  max-width: $container-fluid-max;
+  padding: 0 size(120px);
+  @include mq-breakpoint-s() {
+    padding: 0 size(24px);
+  }
+  box-sizing: border-box;
+}
+
+.main-container {
+  width: 100%;
+  overflow-x: hidden;
+  overflow: auto;
+}
+
+.default-footer {
+  background-color: color(gray, light);
+}
+
+.default-header {
+  height: size($header-height);
+  width: 100%;
+  transition: 0.2s;
+  background-color: color(white, primary);
+  &--sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+  }
+  &--shadow {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  }
+  &__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    h1 {
+      font-size: size(22px);
+    }
+  }
+}
+
+.hero-header {
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 60vh;
+  @include mq-breakpoint-s() {
+    min-height: 80vh;
+  }
+}
+
+.page {
+  margin-top: size(18px);
+  overflow: hidden;
+  h2 {
+    font-size: size(16px);
+  }
+}
+
+.title {
+  @include title();
+}
+.subtitle {
+  @include subtitle();
+}
+.paragraph {
+  @include paragraph();
+}
+
+.block {
+  display: block;
+}
+
+.center {
+  margin: 0 auto;
+}
+
+* {
+  [data-mobile] {
+    display: none;
+  }
+  [data-desktop] {
+    display: block;
+  }
+  @include mq-breakpoint-s {
+    [data-mobile] {
+      display: block;
+    }
+    [data-desktop] {
+      display: none;
+    }
+  }
+  @include mq-breakpoint-m {
+    [data-mobile] {
+      display: block;
+    }
+    [data-desktop] {
+      display: none;
+    }
+  }
+}

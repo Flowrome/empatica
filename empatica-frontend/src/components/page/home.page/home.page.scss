@@ -1,0 +1,88 @@
+// home.page styles
+:host,
+home-page {
+  @include default-font();
+  .hero-header {
+    display: flex;
+    align-items: flex-end;
+    @include mq-breakpoint-l {
+      background-image: url(../../../assets/images/homepage_hero-lg-xhdpi.jpg);
+    }
+    @include mq-breakpoint-xl {
+      background-image: url(../../../assets/images/homepage_hero-lg-xhdpi.jpg);
+    }
+    @include mq-breakpoint-s {
+      background-image: url(../../../assets/images/homepage_hero-sm-xhdpi.jpg);
+    }
+    @include mq-breakpoint-m {
+      background-image: url(../../../assets/images/homepage_hero-sm-xhdpi.jpg);
+    }
+    .title {
+      font-weight: 900;
+    }
+    .paragraph,
+    .title {
+      color: color(gray, light);
+    }
+    .paragraph,
+    .title {
+      @include mq-breakpoint-s {
+        text-align: center;
+      }
+      @include mq-breakpoint-m {
+        text-align: center;
+      }
+    }
+    emp-button-molecule {
+      display: block;
+      @include mq-breakpoint-s {
+        display: flex;
+        justify-content: center;
+      }
+      @include mq-breakpoint-m {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+  .subtitle,
+  .title {
+    @include mq-breakpoint-s {
+      text-align: center;
+    }
+    @include mq-breakpoint-m {
+      text-align: center;
+    }
+  }
+  .default-header {
+    background-color: color(primary, blue);
+    &--hidden {
+      margin-top: -#{size($header-height)};
+    }
+    img {
+      height: 60%;
+      cursor: pointer;
+    }
+    emp-i-molecule {
+      --i-color: #{color(gray, light)};
+      --i-font-size: #{size(24px)};
+      --i-width: #{size(24px)};
+      --i-height: #{size(24px)};
+      margin-left: size(20px);
+      margin-right: 0;
+      &:first-of-type {
+        margin-left: auto;
+      }
+    }
+  }
+  .emp-logo {
+    @include mq-breakpoint-m() {
+      margin: 0 auto 50px auto;
+      display: block;
+    }
+    @include mq-breakpoint-s() {
+      margin: 0 auto 50px auto;
+      display: block;
+    }
+  }
+}

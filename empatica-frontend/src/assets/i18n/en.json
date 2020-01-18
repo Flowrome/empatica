@@ -1,0 +1,17 @@
+{
+  "HOMEPAGE": {
+    "HERO": {
+      "TITLE": "Smart technology for people living with epilepsy",
+      "PARAGRAPH": "Comes with a 30-day Free Trial Subscription",
+      "BUTTON_TEXT": "Buy now"
+    },
+    "PRODUCT_SUBTITLE": "Your companion for epilepsy management",
+    "PRODUCT_BUTTON_TEXT": "Discover Embrace Features",
+    "PRODUCT_DESCRIPTION": "The Embrace watch uses advanced learning algorithms to identify tonic-clonic seizures and send alerts to caregivers. It also provides sleep, rest, and physical activity analysis"
+  },
+  "FOOTER": {
+    "COMPANY": "Company",
+    "CAREERS": "Careers",
+    "COMPANY_ADDRESS": "© 2017 Empatica Inc. - ISO 13485 Cert. No. 9124.EPTC - All right reserved"
+  }
+}

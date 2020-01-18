@@ -1,0 +1,63 @@
+// emp-button.molecule styles
+:host,
+emp-button-molecule {
+  @include default-font();
+  .emp-btn {
+    cursor: pointer;
+    outline: none;
+    min-width: size(150px);
+    border-width: size(2px);
+    border-style: solid;
+    display: flex;
+    align-items: center;
+    padding: size(9px) size(24px);
+    @include paragraph();
+    border-radius: size(4px);
+    transition: 0.15s;
+    position: relative;
+    &--centered {
+      justify-content: center;
+    }
+    &--full {
+      width: 100%;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(white, 0.21);
+      transition: 0.15s;
+    }
+    &:active {
+      &::after {
+        opacity: 1;
+      }
+    }
+    &--primary {
+      background-color: var(--emp-button-primary-color);
+      color: var(--emp-button-white-color);
+      border-color: var(--emp-button-primary-color);
+      &:hover,
+      &:active {
+        background-color: transparent;
+        color: var(--emp-button-primary-color);
+        border-color: var(--emp-button-primary-color);
+      }
+    }
+    &--gray {
+      background-color: transparent;
+      color: var(--emp-button-gray-light-color);
+      border-color: var(--emp-button-gray-light-color);
+      &:hover,
+      &:active {
+        background-color: var(--emp-button-gray-light-color);
+        color: var(--emp-button-gray-dark-color);
+        border-color: var(--emp-button-gray-light-color);
+      }
+    }
+  }
+}

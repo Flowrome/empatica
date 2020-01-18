@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "declaration": false,
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "lib": ["dom", "es2017"],
+    "moduleResolution": "node",
+    "module": "esnext",
+    "target": "es2017",
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "jsx": "react",
+    "jsxFactory": "h",
+    "paths": {
+      "@env": ["src/envs/env.ts"]
+    }
+  },
+  "include": ["src", "**/*.ts", "**/*.tsx", "types/jsx.d.ts"],
+  "exclude": ["node_modules", "**/*.e2e.ts", "**/*.spec.ts", "src/envs"]
+}
