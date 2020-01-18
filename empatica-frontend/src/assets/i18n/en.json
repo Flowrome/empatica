@@ -15,8 +15,8 @@
     "COMPANY_ADDRESS": "© 2017 Empatica Inc. - ISO 13485 Cert. No. 9124.EPTC - All right reserved"
   },
   "LOGIN": {
-    "USERNAME": "Username",
-    "PASSWORD": "Password",
+    "USERNAME": "Username (Ex. JonhDoe)",
+    "PASSWORD": "Password (Ex. 12345)",
     "SUBMIT": "Login"
   }
 }

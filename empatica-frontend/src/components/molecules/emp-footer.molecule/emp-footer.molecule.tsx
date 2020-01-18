@@ -19,15 +19,14 @@ export class EmpFooterMolecule {
 
   public render(): any {
     return [
-      <div class='first-line'>
-        {' '}
+      <div class="first-line">
         {this.links.map(link => (
           <a href={link.link} data-translate>
             {link.label}
           </a>
         ))}
       </div>,
-      <div class='second-line'>
+      <div class="second-line">
         <p data-translate>FOOTER.COMPANY_ADDRESS</p>
       </div>
     ];

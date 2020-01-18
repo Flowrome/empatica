@@ -1,5 +1,6 @@
 import { Component, Prop, h, Host, Element, Event, EventEmitter, State } from '@stencil/core';
 import { int } from '../../../utils/translation';
+import { Validation, ValidationError, Validator } from '../../../utils/validator';
 
 @Component({
   tag: 'emp-input-molecule',
@@ -12,17 +13,18 @@ export class EmpInputMolecule {
   @Prop() public label: string;
   @Prop() public icon: string;
   @Prop() public type: string & 'text' | 'password' | 'email' = 'text';
-  @Prop() public error: string | string[] = '';
+  @Prop() public errors: Validation[] = [];
 
-  @Event() public empchange: EventEmitter<string>;
-  @Event() public empfocus: EventEmitter<string>;
-  @Event() public empkeyUp: EventEmitter<string>;
-  @Event() public empblur: EventEmitter<string>;
-  @Event() public empicon: EventEmitter<string>;
+  @Event() public empchange: EventEmitter<{ value: string; valid: boolean; errors?: ValidationError }>;
+  @Event() public empfocus: EventEmitter<{ value: string; valid: boolean; errors?: ValidationError }>;
+  @Event() public empkeyUp: EventEmitter<{ value: string; valid: boolean; errors?: ValidationError }>;
+  @Event() public empblur: EventEmitter<{ value: string; valid: boolean; errors?: ValidationError }>;
+  @Event() public empicon: EventEmitter<{ value: string; valid: boolean; errors?: ValidationError }>;
 
   @Element() private element: HTMLElement;
 
   @State() private pristine: boolean = true;
+  @State() private validator: Validator = new Validator(this.errors);
 
   public componentDidLoad() {
     int.init(this.element.shadowRoot);
@@ -35,47 +37,37 @@ export class EmpInputMolecule {
   private handleChange(newValue: string) {
     this.value = newValue;
     this.pristine = false;
-    this.empchange.emit(this.value);
+    this.empchange.emit({
+      value: this.value,
+      valid: this.validator.validate(this.value),
+      errors: this.validator.errors
+    });
   }
 
   private handleFocus(newValue: string) {
     this.value = newValue;
     this.pristine = false;
-    this.empfocus.emit(this.value);
+    this.empfocus.emit({
+      value: this.value,
+      valid: this.validator.validate(this.value),
+      errors: this.validator.errors
+    });
   }
 
   private handleBlur(newValue: string) {
     this.value = newValue;
     this.pristine = false;
-    this.empblur.emit(this.value);
+    this.empblur.emit({ value: this.value, valid: this.validator.validate(this.value), errors: this.validator.errors });
   }
 
   private handleKeyUp(newValue: string) {
     this.value = newValue;
     this.pristine = false;
-    this.empkeyUp.emit(this.value);
-  }
-
-  private renderError(): HTMLElement {
-    let toReturn: HTMLElement = null;
-    if (typeof this.error === 'string') {
-      toReturn = (
-        <p class='error' data-translate>
-          {this.error}
-        </p>
-      );
-    } else {
-      toReturn = (
-        <ul>
-          {this.error.map(error => (
-            <li class='error' data-translate>
-              {error}
-            </li>
-          ))}
-        </ul>
-      );
-    }
-    return toReturn;
+    this.empkeyUp.emit({
+      value: this.value,
+      valid: this.validator.validate(this.value),
+      errors: this.validator.errors
+    });
   }
 
   public render(): any {
@@ -83,7 +75,7 @@ export class EmpInputMolecule {
       'emp-input': true,
       'emp-input--filled': this.value.length > 0,
       'emp-input--pristine': this.pristine,
-      'emp-input--error': this.error.length > 0
+      'emp-input--error': this.validator.errorMessages.length > 0
     };
     return (
       <div class={classes}>
@@ -100,7 +92,15 @@ export class EmpInputMolecule {
           {this.label}
         </label>
         {this.icon && <emp-i-molecule onClick={() => this.empicon.emit()} icon={this.icon}></emp-i-molecule>}
-        {this.error.length > 0 && this.renderError()}
+        {Object.keys(this.validator.errors).length > 0 && (
+          <ul key={Object.keys(this.validator.errors).length}>
+            {Object.keys(this.validator.errors).map(key => (
+              <li class="error" data-translate>
+                {this.validator.errors[key]?.error}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     );
   }

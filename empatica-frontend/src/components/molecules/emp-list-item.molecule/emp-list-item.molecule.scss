@@ -1,0 +1,5 @@
+// emp-list-item.molecule styles
+:host,
+emp-list-item-molecule {
+  @include default-font();
+}
