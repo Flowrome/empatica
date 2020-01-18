@@ -1,5 +1,6 @@
 import { Component, Prop, h, State } from '@stencil/core';
 import { apis } from '../../../utils/apis';
+import { int } from '../../../utils/translation';
 
 @Component({
   tag: 'login-page',
@@ -13,6 +14,10 @@ export class LoginPage {
   @State() private errorsPassword: string[] = [];
   @State() private username: string;
   @State() private password: string;
+
+  public componentDidLoad(): void {
+    int.init();
+  }
 
   private async login(): Promise<void> {
     if (!!this.username && !!this.password) {
