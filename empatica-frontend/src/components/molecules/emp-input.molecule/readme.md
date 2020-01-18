@@ -9,7 +9,7 @@
 
 | Property | Attribute | Description | Type                              | Default                           |
 | -------- | --------- | ----------- | --------------------------------- | --------------------------------- |
-| `error`  | `error`   |             | `string \| string[]`              | `''`                              |
+| `errors` | --        |             | `Validation[]`                    | `[]`                              |
 | `icon`   | `icon`    |             | `string`                          | `undefined`                       |
 | `iid`    | `iid`     |             | `string`                          | ``input-${new Date().valueOf()}`` |
 | `label`  | `label`   |             | `string`                          | `undefined`                       |
@@ -19,13 +19,13 @@
 
 ## Events
 
-| Event       | Description | Type                  |
-| ----------- | ----------- | --------------------- |
-| `empblur`   |             | `CustomEvent<string>` |
-| `empchange` |             | `CustomEvent<string>` |
-| `empfocus`  |             | `CustomEvent<string>` |
-| `empicon`   |             | `CustomEvent<string>` |
-| `empkeyUp`  |             | `CustomEvent<string>` |
+| Event       | Description | Type                                                                        |
+| ----------- | ----------- | --------------------------------------------------------------------------- |
+| `empblur`   |             | `CustomEvent<{ value: string; valid: boolean; errors?: ValidationError; }>` |
+| `empchange` |             | `CustomEvent<{ value: string; valid: boolean; errors?: ValidationError; }>` |
+| `empfocus`  |             | `CustomEvent<{ value: string; valid: boolean; errors?: ValidationError; }>` |
+| `empicon`   |             | `CustomEvent<{ value: string; valid: boolean; errors?: ValidationError; }>` |
+| `empkeyUp`  |             | `CustomEvent<{ value: string; valid: boolean; errors?: ValidationError; }>` |
 
 
 ## Dependencies

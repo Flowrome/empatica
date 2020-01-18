@@ -5,51 +5,59 @@
  * It contains typing information for all components that exist in this project.
  */
 
+
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
-import { Validation, ValidationError } from './utils/validator';
-import { RouterHistory } from '@stencil/router';
+import {
+  Validation,
+  ValidationError,
+} from './utils/validator';
+import {
+  RouterHistory,
+} from '@stencil/router';
 
 export namespace Components {
   interface EmpArticleMolecule {
-    productImage: string;
+    'productImage': string;
   }
   interface EmpButtonMolecule {
-    center: boolean;
-    disabled: boolean;
-    full: boolean;
-    kind: string & 'primary' | 'gray';
+    'center': boolean;
+    'disabled': boolean;
+    'full': boolean;
+    'kind': string & 'primary' | 'gray';
   }
   interface EmpFooterMolecule {}
   interface EmpIMolecule {
-    hover: boolean;
-    icon: string;
-    pointer: boolean;
+    'hover': boolean;
+    'icon': string;
+    'pointer': boolean;
   }
   interface EmpInputMolecule {
-    errors: Validation[];
-    icon: string;
-    iid: string;
-    label: string;
-    type: string & 'text' | 'password' | 'email';
-    value: string;
+    'errors': Validation[];
+    'icon': string;
+    'iid': string;
+    'label': string;
+    'type': string & 'text' | 'password' | 'email';
+    'value': string;
   }
   interface EmpListItemMolecule {
-    text: string;
+    'text': string;
   }
   interface FlApp {}
   interface HomePage {
-    history: RouterHistory;
+    'history': RouterHistory;
   }
   interface LoginPage {
-    sectionTitle: string;
+    'sectionTitle': string;
   }
   interface ProfilePage {
-    headerTitle: string;
-    sectionTitle: string;
+    'headerTitle': string;
+    'sectionTitle': string;
   }
 }
 
 declare global {
+
+
   interface HTMLEmpArticleMoleculeElement extends Components.EmpArticleMolecule, HTMLStencilElement {}
   var HTMLEmpArticleMoleculeElement: {
     prototype: HTMLEmpArticleMoleculeElement;
@@ -125,47 +133,47 @@ declare global {
 
 declare namespace LocalJSX {
   interface EmpArticleMolecule {
-    onImageClick?: (event: CustomEvent<void>) => void;
-    productImage?: string;
+    'onImageClick'?: (event: CustomEvent<void>) => void;
+    'productImage'?: string;
   }
   interface EmpButtonMolecule {
-    center?: boolean;
-    disabled?: boolean;
-    full?: boolean;
-    kind?: string & 'primary' | 'gray';
+    'center'?: boolean;
+    'disabled'?: boolean;
+    'full'?: boolean;
+    'kind'?: string & 'primary' | 'gray';
   }
   interface EmpFooterMolecule {}
   interface EmpIMolecule {
-    hover?: boolean;
-    icon?: string;
-    pointer?: boolean;
+    'hover'?: boolean;
+    'icon'?: string;
+    'pointer'?: boolean;
   }
   interface EmpInputMolecule {
-    errors?: Validation[];
-    icon?: string;
-    iid?: string;
-    label?: string;
-    onEmpblur?: (event: CustomEvent<{ value: string; valid: boolean; errors?: ValidationError }>) => void;
-    onEmpchange?: (event: CustomEvent<{ value: string; valid: boolean; errors?: ValidationError }>) => void;
-    onEmpfocus?: (event: CustomEvent<{ value: string; valid: boolean; errors?: ValidationError }>) => void;
-    onEmpicon?: (event: CustomEvent<{ value: string; valid: boolean; errors?: ValidationError }>) => void;
-    onEmpkeyUp?: (event: CustomEvent<{ value: string; valid: boolean; errors?: ValidationError }>) => void;
-    type?: string & 'text' | 'password' | 'email';
-    value?: string;
+    'errors'?: Validation[];
+    'icon'?: string;
+    'iid'?: string;
+    'label'?: string;
+    'onEmpblur'?: (event: CustomEvent<{ value: string; valid: boolean; errors?: ValidationError }>) => void;
+    'onEmpchange'?: (event: CustomEvent<{ value: string; valid: boolean; errors?: ValidationError }>) => void;
+    'onEmpfocus'?: (event: CustomEvent<{ value: string; valid: boolean; errors?: ValidationError }>) => void;
+    'onEmpicon'?: (event: CustomEvent<{ value: string; valid: boolean; errors?: ValidationError }>) => void;
+    'onEmpkeyUp'?: (event: CustomEvent<{ value: string; valid: boolean; errors?: ValidationError }>) => void;
+    'type'?: string & 'text' | 'password' | 'email';
+    'value'?: string;
   }
   interface EmpListItemMolecule {
-    text?: string;
+    'text'?: string;
   }
   interface FlApp {}
   interface HomePage {
-    history?: RouterHistory;
+    'history'?: RouterHistory;
   }
   interface LoginPage {
-    sectionTitle?: string;
+    'sectionTitle'?: string;
   }
   interface ProfilePage {
-    headerTitle?: string;
-    sectionTitle?: string;
+    'headerTitle'?: string;
+    'sectionTitle'?: string;
   }
 
   interface IntrinsicElements {
@@ -184,7 +192,8 @@ declare namespace LocalJSX {
 
 export { LocalJSX as JSX };
 
-declare module '@stencil/core' {
+
+declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
       'emp-article-molecule': LocalJSX.EmpArticleMolecule & JSXBase.HTMLAttributes<HTMLEmpArticleMoleculeElement>;
@@ -200,3 +209,5 @@ declare module '@stencil/core' {
     }
   }
 }
+
+
