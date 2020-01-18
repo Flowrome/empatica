@@ -5,7 +5,7 @@ import autoprefixer from 'autoprefixer';
 import alias from 'rollup-plugin-alias';
 import outputTargets from './stencil.config.output-targets.json';
 
-const baseUrl = process.argv.indexOf('--prerender') > -1 ? 'https://https://empatica.herokuapp.com/' : '/';
+const baseUrl = process.argv.indexOf('--prerender') > -1 ? 'https://empatica.herokuapp.com/' : '/';
 
 const outputTargetsParsed = [
   {
