@@ -10,7 +10,7 @@ export class EmpIMolecule {
   @Prop() public pointer: boolean = true;
   @Prop() public hover: boolean;
 
-  render(): any {
+  public render(): any {
     const iconName = this.icon.indexOf('emp-i-') > -1 ? this.icon : `emp-i-${this.icon}`;
     return this.icon && <i class={{ [iconName]: true, pointer: this.pointer, hoverized: this.hover }}></i>;
   }

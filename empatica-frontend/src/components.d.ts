@@ -7,7 +7,9 @@
 
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
-
+import {
+  RouterHistory,
+} from '@stencil/router';
 
 export namespace Components {
   interface EmpArticleMolecule {
@@ -15,6 +17,7 @@ export namespace Components {
   }
   interface EmpButtonMolecule {
     'center': boolean;
+    'disabled': boolean;
     'full': boolean;
     'kind': string & 'primary' | 'gray';
   }
@@ -24,8 +27,21 @@ export namespace Components {
     'icon': string;
     'pointer': boolean;
   }
+  interface EmpInputMolecule {
+    'error': string | string[];
+    'icon': string;
+    'iid': string;
+    'label': string;
+    'type': string & 'text' | 'password' | 'email';
+    'value': string;
+  }
   interface FlApp {}
-  interface HomePage {}
+  interface HomePage {
+    'history': RouterHistory;
+  }
+  interface LoginPage {
+    'sectionTitle': string;
+  }
 }
 
 declare global {
@@ -55,6 +71,12 @@ declare global {
     new (): HTMLEmpIMoleculeElement;
   };
 
+  interface HTMLEmpInputMoleculeElement extends Components.EmpInputMolecule, HTMLStencilElement {}
+  var HTMLEmpInputMoleculeElement: {
+    prototype: HTMLEmpInputMoleculeElement;
+    new (): HTMLEmpInputMoleculeElement;
+  };
+
   interface HTMLFlAppElement extends Components.FlApp, HTMLStencilElement {}
   var HTMLFlAppElement: {
     prototype: HTMLFlAppElement;
@@ -66,13 +88,21 @@ declare global {
     prototype: HTMLHomePageElement;
     new (): HTMLHomePageElement;
   };
+
+  interface HTMLLoginPageElement extends Components.LoginPage, HTMLStencilElement {}
+  var HTMLLoginPageElement: {
+    prototype: HTMLLoginPageElement;
+    new (): HTMLLoginPageElement;
+  };
   interface HTMLElementTagNameMap {
     'emp-article-molecule': HTMLEmpArticleMoleculeElement;
     'emp-button-molecule': HTMLEmpButtonMoleculeElement;
     'emp-footer-molecule': HTMLEmpFooterMoleculeElement;
     'emp-i-molecule': HTMLEmpIMoleculeElement;
+    'emp-input-molecule': HTMLEmpInputMoleculeElement;
     'fl-app': HTMLFlAppElement;
     'home-page': HTMLHomePageElement;
+    'login-page': HTMLLoginPageElement;
   }
 }
 
@@ -83,6 +113,7 @@ declare namespace LocalJSX {
   }
   interface EmpButtonMolecule {
     'center'?: boolean;
+    'disabled'?: boolean;
     'full'?: boolean;
     'kind'?: string & 'primary' | 'gray';
   }
@@ -92,16 +123,36 @@ declare namespace LocalJSX {
     'icon'?: string;
     'pointer'?: boolean;
   }
+  interface EmpInputMolecule {
+    'error'?: string | string[];
+    'icon'?: string;
+    'iid'?: string;
+    'label'?: string;
+    'onEmpblur'?: (event: CustomEvent<string>) => void;
+    'onEmpchange'?: (event: CustomEvent<string>) => void;
+    'onEmpfocus'?: (event: CustomEvent<string>) => void;
+    'onEmpicon'?: (event: CustomEvent<string>) => void;
+    'onEmpkeyUp'?: (event: CustomEvent<string>) => void;
+    'type'?: string & 'text' | 'password' | 'email';
+    'value'?: string;
+  }
   interface FlApp {}
-  interface HomePage {}
+  interface HomePage {
+    'history'?: RouterHistory;
+  }
+  interface LoginPage {
+    'sectionTitle'?: string;
+  }
 
   interface IntrinsicElements {
     'emp-article-molecule': EmpArticleMolecule;
     'emp-button-molecule': EmpButtonMolecule;
     'emp-footer-molecule': EmpFooterMolecule;
     'emp-i-molecule': EmpIMolecule;
+    'emp-input-molecule': EmpInputMolecule;
     'fl-app': FlApp;
     'home-page': HomePage;
+    'login-page': LoginPage;
   }
 }
 
@@ -115,8 +166,10 @@ declare module "@stencil/core" {
       'emp-button-molecule': LocalJSX.EmpButtonMolecule & JSXBase.HTMLAttributes<HTMLEmpButtonMoleculeElement>;
       'emp-footer-molecule': LocalJSX.EmpFooterMolecule & JSXBase.HTMLAttributes<HTMLEmpFooterMoleculeElement>;
       'emp-i-molecule': LocalJSX.EmpIMolecule & JSXBase.HTMLAttributes<HTMLEmpIMoleculeElement>;
+      'emp-input-molecule': LocalJSX.EmpInputMolecule & JSXBase.HTMLAttributes<HTMLEmpInputMoleculeElement>;
       'fl-app': LocalJSX.FlApp & JSXBase.HTMLAttributes<HTMLFlAppElement>;
       'home-page': LocalJSX.HomePage & JSXBase.HTMLAttributes<HTMLHomePageElement>;
+      'login-page': LocalJSX.LoginPage & JSXBase.HTMLAttributes<HTMLLoginPageElement>;
     }
   }
 }

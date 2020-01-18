@@ -1,0 +1,11 @@
+// emp-input.molecule styles
+:root {
+  --emp-input-color: #{color(black, tertiary)};
+  --emp-input-error-color: #{color(primary, red)};
+  --emp-input-error-bg-color: #{color(gray, light)};
+  --emp-input-icon-color: #{color(black, tertiary)};
+  --emp-input-label-color: #{color(gray, dark)};
+  --emp-input-label-focused-color: #{color(primary, red)};
+  --emp-input-underline-color: #{color(black, tertiary)};
+  --emp-input-underline-focused-color: #{color(primary, blue)};
+}

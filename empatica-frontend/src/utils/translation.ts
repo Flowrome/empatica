@@ -6,7 +6,7 @@ export class Translation {
     this.language = lang;
   }
 
-  public init(element?: HTMLElement | Document | ShadowRoot) {
+  public init(element?: HTMLElement | Document | ShadowRoot): void {
     this.insertTranslation(element);
   }
 
@@ -39,11 +39,11 @@ export class Translation {
     return Promise.resolve();
   }
 
-  private insertTranslation(elem: any = document) {
-    elem.querySelectorAll('[data-translate]').forEach(elem => {
-      const { innerHTML } = elem;
+  private insertTranslation(elem: any = document): void {
+    elem.querySelectorAll('[data-translate]').forEach(element => {
+      const { innerHTML } = element;
       this.translate(innerHTML).then(trad => {
-        elem.innerHTML = trad;
+        element.innerHTML = trad;
       });
     });
   }

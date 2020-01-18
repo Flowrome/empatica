@@ -9,8 +9,9 @@ export class EmpButtonMolecule {
   @Prop() public kind: string & 'primary' | 'gray' = 'primary';
   @Prop() public center: boolean = true;
   @Prop() public full: boolean = false;
+  @Prop() public disabled: boolean;
 
-  render(): any {
+  public render(): any {
     const classes: { [key: string]: boolean } = {
       'emp-btn': true,
       'emp-btn--centered': this.center,
@@ -19,7 +20,7 @@ export class EmpButtonMolecule {
       'emp-btn--gray': this.kind === 'gray'
     };
     return (
-      <button class={classes}>
+      <button disabled={this.disabled} class={classes}>
         <slot></slot>
       </button>
     );

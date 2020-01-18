@@ -43,9 +43,11 @@ emp-button-molecule {
       border-color: var(--emp-button-primary-color);
       &:hover,
       &:active {
-        background-color: transparent;
-        color: var(--emp-button-primary-color);
-        border-color: var(--emp-button-primary-color);
+        &:enabled {
+          background-color: transparent;
+          color: var(--emp-button-primary-color);
+          border-color: var(--emp-button-primary-color);
+        }
       }
     }
     &--gray {
@@ -54,10 +56,16 @@ emp-button-molecule {
       border-color: var(--emp-button-gray-light-color);
       &:hover,
       &:active {
-        background-color: var(--emp-button-gray-light-color);
-        color: var(--emp-button-gray-dark-color);
-        border-color: var(--emp-button-gray-light-color);
+        &:enabled {
+          background-color: var(--emp-button-gray-light-color);
+          color: var(--emp-button-gray-dark-color);
+          border-color: var(--emp-button-gray-light-color);
+        }
       }
+    }
+    &:disabled {
+      opacity: 0.6;
+      cursor: default;
     }
   }
 }

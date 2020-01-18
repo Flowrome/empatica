@@ -82,17 +82,18 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@stencil/postcss": "^1.0.1",
     "@stencil/router": "^1.0.1",
     "@stencil/sass": "^1.0.1",
-    "@stencil/postcss": "^1.0.1",
     "@types/autoprefixer": "^9.5.0",
     "autoprefixer": "^9.6.1",
     "chokidar": "^3.2.2",
-    "glob": "^7.1.4",
-    "ora": "^4.0.2",
-    "shelljs": "^0.8.3",
     "fs-extra": "^8.1.0",
+    "glob": "^7.1.4",
     "glob-promise": "^3.4.0",
-    "rollup-plugin-alias": "^1.5.2"
+    "ora": "^4.0.2",
+    "rollup-plugin-alias": "^1.5.2",
+    "shelljs": "^0.8.3",
+    "wretch": "^1.6.0"
   }
 }

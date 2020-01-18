@@ -1,0 +1,84 @@
+// emp-input.molecule styles
+:host,
+emp-input-molecule {
+  @include default-font();
+  .emp-input {
+    position: relative;
+    margin: size(18px) 0;
+    width: 100%;
+    input {
+      width: 100%;
+      @include paragraph();
+      height: size(26px);
+      padding: size(4px);
+      padding-right: size(24px);
+      box-sizing: border-box;
+      border: none;
+      outline: none;
+      box-shadow: none;
+      color: var(--emp-input-color);
+      position: relative;
+      border-bottom: 1px solid var(--emp-input-underline-color);
+      transition: 0.2s;
+      &:focus {
+        border-color: var(--emp-input-underline-focused-color);
+        + label {
+          @include paragraph-min();
+          margin-top: -#{size(15px)};
+          color: var(--emp-input-underline-focused-color);
+        }
+      }
+    }
+    emp-i-molecule {
+      @include paragraph();
+      --i-color: var(--emp-input-icon-color);
+      --i-font-size: #{size(18px)};
+      --i-width: #{size(18px)};
+      --i-height: #{size(18px)};
+      position: absolute;
+      right: 0;
+      top: size(4px);
+    }
+    label {
+      width: 100%;
+      @include paragraph();
+      transition: 0.2s;
+      color: var(--emp-input-label-color);
+      position: absolute;
+      top: size(4px);
+      left: size(4px);
+      padding-right: size(24px);
+      box-sizing: border-box;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    ul {
+      list-style-type: none;
+      overflow: hidden;
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+    .error {
+      cursor: default;
+      padding: size(10px) size(4px);
+      @include paragraph-min();
+      width: 100%;
+      box-sizing: border-box;
+      color: var(--emp-input-error-color);
+      background-color: var(--emp-input-error-bg-color);
+    }
+    li.error {
+      border-bottom: 1px solid var(--emp-input-error-color);
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+    &--filled {
+      label {
+        @include paragraph-min();
+        margin-top: -#{size(15px)};
+      }
+    }
+  }
+}

@@ -13,13 +13,13 @@ export class EmpFooterMolecule {
     { link: 'www.google.com', label: 'FOOTER.CAREERS' }
   ];
 
-  componentDidLoad() {
+  public componentDidLoad() {
     int.init(this.element.shadowRoot);
   }
 
-  render(): any {
+  public render(): any {
     return [
-      <div class="first-line">
+      <div class='first-line'>
         {' '}
         {this.links.map(link => (
           <a href={link.link} data-translate>
@@ -27,7 +27,7 @@ export class EmpFooterMolecule {
           </a>
         ))}
       </div>,
-      <div class="second-line">
+      <div class='second-line'>
         <p data-translate>FOOTER.COMPANY_ADDRESS</p>
       </div>
     ];

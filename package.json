@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "concurrently \"cd empatica-frontend && npm i\"",
-    "start": "concurrently \"cd empatica-frontend && npm start\""
+    "prepare": "concurrently \"cd empatica-frontend && npm i\" \"cd empatica-backend && npm i\"",
+    "start": "concurrently \"cd empatica-frontend && npm start\" \"cd empatica-backend && npm start\""
   },
   "author": "",
   "license": "ISC",

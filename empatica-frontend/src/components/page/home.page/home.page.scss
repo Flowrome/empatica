@@ -2,6 +2,9 @@
 :host,
 home-page {
   @include default-font();
+  .page {
+    margin-top: size(18px);
+  }
   .hero-header {
     display: flex;
     align-items: flex-end;

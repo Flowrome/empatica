@@ -7,21 +7,21 @@ import { EventEmitter } from '../../../../dist/types/stencil.core';
   shadow: true
 })
 export class EmpArticleMolecule {
-  @Prop() productImage: string;
-  @Event() imageClick: EventEmitter<void>;
+  @Prop() public productImage: string;
+  @Event() public imageClick: EventEmitter<void>;
 
-  render(): any {
+  public render(): any {
     return (
-      <div class="article">
-        <div class="description-container">
-          <slot name="left"></slot>
+      <div class='article'>
+        <div class='description-container'>
+          <slot name='left'></slot>
         </div>
-        <div class="product-container">
+        <div class='product-container'>
           {this.productImage && <img onClick={() => this.imageClick.emit()} src={this.productImage}></img>}
-          <slot name="right"></slot>
+          <slot name='right'></slot>
         </div>
-        <div class="footer">
-          <slot name="footer"></slot>
+        <div class='footer'>
+          <slot name='footer'></slot>
         </div>
       </div>
     );
