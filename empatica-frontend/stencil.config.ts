@@ -4,7 +4,8 @@ import { postcss } from '@stencil/postcss';
 import autoprefixer from 'autoprefixer';
 import alias from 'rollup-plugin-alias';
 import outputTargets from './stencil.config.output-targets.json';
-import { OutputTarget } from '@stencil/core/dist/declarations';
+
+const baseUrl = process.argv.indexOf('--prerender') > -1 ? 'https://https://empatica.herokuapp.com/' : '/';
 
 const outputTargetsParsed = [
   {
@@ -13,21 +14,22 @@ const outputTargetsParsed = [
     copy: [
       {
         src: require('path').resolve('./src/assets/fonts'),
-        dest: require('path').resolve('./dist/assets/fonts'),
+        dest: require('path').resolve('./dist/assets/fonts')
       },
       {
         src: require('path').resolve('./src/assets/images'),
-        dest: require('path').resolve('./dist/assets/images'),
-      },
-    ],
+        dest: require('path').resolve('./dist/assets/images')
+      }
+    ]
   },
   {
-    type: 'docs-readme',
+    type: 'docs-readme'
   },
   {
+    baseUrl: baseUrl,
     type: 'www',
-    serviceWorker: null, // disable service workers
-  },
+    serviceWorker: null // disable service workers
+  }
 ].filter((target: any) => outputTargets.indexOf(target.type) > -1 && target);
 
 export const config: Config = {
@@ -37,16 +39,16 @@ export const config: Config = {
   plugins: [
     sass({
       injectGlobalPaths: [
-        'src/styles/_local-styles.scss', // THIS ONE WILL BE INJECTED INSIDE THE COMPONENTS
-      ],
+        'src/styles/_local-styles.scss' // THIS ONE WILL BE INJECTED INSIDE THE COMPONENTS
+      ]
     }),
     postcss({
-      plugins: [autoprefixer()],
+      plugins: [autoprefixer()]
     }),
     alias({
       resolve: ['.jsx', '.js', '.tsx', '.ts'],
       // ROLLUP ALIAS SUPPORT ONLY THE ALIASES FOR FILES (NOT FOR FOLDERS)
-      '@env': 'src/envs/env.ts',
-    }),
-  ],
+      '@env': 'src/envs/env.ts'
+    })
+  ]
 };
