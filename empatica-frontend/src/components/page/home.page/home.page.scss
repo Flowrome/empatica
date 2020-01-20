@@ -26,9 +26,6 @@ home-page {
     .paragraph,
     .title {
       color: color(gray, light);
-    }
-    .paragraph,
-    .title {
       @include mq-breakpoint-s {
         text-align: center;
       }
@@ -49,6 +46,7 @@ home-page {
     }
   }
   .subtitle,
+  .paragraph,
   .title {
     @include mq-breakpoint-s {
       text-align: center;

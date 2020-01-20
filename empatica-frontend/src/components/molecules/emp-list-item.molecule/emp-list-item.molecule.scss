@@ -3,8 +3,8 @@
 emp-list-item-molecule {
   .emp-list {
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    justify-content: flex-start;
+    align-items: center;
     padding: size(18px) size(10px);
     cursor: pointer;
     position: relative;

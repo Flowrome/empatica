@@ -10,29 +10,29 @@
     "PRODUCT_DESCRIPTION": "The Embrace watch uses advanced learning algorithms to identify tonic-clonic seizures and send alerts to caregivers. It also provides sleep, rest, and physical activity analysis"
   },
   "FOOTER": {
-    "COMPANY": "Company",
-    "CAREERS": "Careers",
+    "COMPANY": "Azienda",
+    "CAREERS": "Carriere",
     "COMPANY_ADDRESS": "© 2017 Empatica Inc. - ISO 13485 Cert. No. 9124.EPTC - All right reserved"
   },
   "LOGIN": {
     "USERNAME": "Username (Ex. JonhDoe)",
     "PASSWORD": "Password (Ex. 12345)",
-    "SUBMIT": "Login"
+    "SUBMIT": "Entra"
   },
   "PROFILE": {
-    "LIST_ITEM_ORDERS": "Orders",
-    "LIST_ITEM_LANGUAGE": "Language",
-    "LIST_ITEM_ADDRESS": "Address informations",
-    "LIST_ITEM_PAYMENT": "Payment informations",
-    "LIST_ITEM_SETTINGS": "Settings",
-    "LIST_ITEM_TC": "Terms & Conditions",
-    "LIST_ITEM_INFO": "Informations",
-    "LIST_ITEM_LOGOUT": "Logout",
-    "LIST_ITEM_MY_MONITORING": "My monitoring",
+    "LIST_ITEM_ORDERS": "Ordini",
+    "LIST_ITEM_LANGUAGE": "Lingua",
+    "LIST_ITEM_ADDRESS": "Indirizzo",
+    "LIST_ITEM_PAYMENT": "Informazioni di pagamento",
+    "LIST_ITEM_SETTINGS": "Impostazioni",
+    "LIST_ITEM_TC": "Termini e condizioni",
+    "LIST_ITEM_INFO": "Informazioni",
+    "LIST_ITEM_LOGOUT": "Esci",
+    "LIST_ITEM_MY_MONITORING": "Il mio monitoraggio",
     "LANGUAGES": {
-      "ENGLISH": "English",
-      "ITALIAN": "Italian",
-      "SPANISH": "Spanish"
+      "ENGLISH": "Inglese",
+      "ITALIAN": "Italiano",
+      "SPANISH": "Spagnolo"
     }
   }
 }

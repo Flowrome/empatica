@@ -16,6 +16,12 @@ export class LoginPage {
   @State() private username: boolean;
   @State() private password: boolean;
 
+  constructor() {
+    if (globalStore.get('user.id')) {
+      this.history.push('profile');
+    }
+  }
+
   public componentDidLoad(): void {
     int.init();
   }

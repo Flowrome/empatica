@@ -8,6 +8,17 @@ profile-page {
       height: 60%;
       cursor: pointer;
     }
+    emp-i-molecule {
+      --i-color: #{color(gray, light)};
+      --i-font-size: #{size(24px)};
+      --i-width: #{size(24px)};
+      --i-height: #{size(24px)};
+      margin-left: size(20px);
+      margin-right: 0;
+      &:first-of-type {
+        margin-left: auto;
+      }
+    }
   }
   ul {
     border-radius: size(8px);
@@ -20,6 +31,26 @@ profile-page {
       }
       &:last-child {
         border-bottom: none;
+      }
+      &.lang-list {
+        --emp-list-bg-color: #{color(gray, dark)};
+        --emp-list-text-color: #{color(gray, light)};
+        --emp-list-icon-right-color: #{color(gray, light)};
+        --emp-list-icon-left-color: #{color(gray, light)};
+        --emp-list-bg-color-hover: #{color(primary, blue)};
+        --emp-list-text-color-hover: #{color(gray, light)};
+        --emp-list-icon-right-color-hover: #{color(gray, light)};
+        --emp-list-icon-left-color-hover: #{color(gray, light)};
+        &--selected {
+          --emp-list-bg-color: #{color(primary, red)};
+          --emp-list-text-color: #{color(gray, light)};
+          --emp-list-icon-right-color: #{color(gray, light)};
+          --emp-list-icon-left-color: #{color(gray, light)};
+          --emp-list-bg-color-hover: #{color(primary, red)};
+          --emp-list-text-color-hover: #{color(gray, light)};
+          --emp-list-icon-right-color-hover: #{color(gray, light)};
+          --emp-list-icon-left-color-hover: #{color(gray, light)};
+        }
       }
     }
   }

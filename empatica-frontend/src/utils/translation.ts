@@ -1,9 +1,10 @@
+import { globalStore } from './store';
 export class Translation {
   private currentLanguage: string = '';
   private currentJSONTranslation: { [key: string]: any } = {};
 
   constructor(lang: string) {
-    this.language = lang;
+    this.language = globalStore.get('lang') || lang;
   }
 
   public init(element?: HTMLElement | Document | ShadowRoot): void {
@@ -17,7 +18,7 @@ export class Translation {
       const objectPath: string[] = placeholder.split('.');
       let currentTranslation: any = this.currentJSONTranslation[this.currentLanguage];
       objectPath.map((path: string) => {
-        currentTranslation = currentTranslation[path] ? currentTranslation[path] : placeholder;
+        currentTranslation = currentTranslation && currentTranslation[path] ? currentTranslation[path] : placeholder;
       });
       toReturn = currentTranslation;
     } else {

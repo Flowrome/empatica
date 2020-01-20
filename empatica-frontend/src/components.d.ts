@@ -53,7 +53,9 @@ export namespace Components {
     'history': RouterHistory;
     'sectionTitle': string;
   }
-  interface ProfilePage {}
+  interface ProfilePage {
+    'history': RouterHistory;
+  }
 }
 
 declare global {
@@ -176,7 +178,9 @@ declare namespace LocalJSX {
     'history'?: RouterHistory;
     'sectionTitle'?: string;
   }
-  interface ProfilePage {}
+  interface ProfilePage {
+    'history'?: RouterHistory;
+  }
 
   interface IntrinsicElements {
     'emp-article-molecule': EmpArticleMolecule;

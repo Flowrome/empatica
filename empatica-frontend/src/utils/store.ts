@@ -43,7 +43,7 @@ export class Store {
             const objectPath: string[] = path.split('.');
             let currentValue: any = this.store;
             objectPath.map((subpath: string) => {
-                currentValue = currentValue[subpath] ? currentValue[subpath] : null;
+                currentValue = currentValue && currentValue[subpath] ? currentValue[subpath] : null;
             });
             toReturn = currentValue;
         } else {

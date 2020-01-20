@@ -67,8 +67,8 @@
     font-size: size(16px);
   }
   &--padded {
-    padding-top: calc(#{size($header-height)} + #{size(18px)});
-    padding-bottom: calc(#{size($header-height)} + #{size(18px)});
+    padding-top: calc(#{size($header-height)});
+    padding-bottom: calc(#{size($header-height)});
   }
 }
 
