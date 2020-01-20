@@ -7,11 +7,30 @@
 
 ## Properties
 
-| Property       | Attribute       | Description | Type     | Default                         |
-| -------------- | --------------- | ----------- | -------- | ------------------------------- |
-| `headerTitle`  | `header-title`  |             | `string` | `<h1>profile.page HEADER</h1>`  |
-| `sectionTitle` | `section-title` |             | `string` | `<h2>profile.page SECTION</h2>` |
+| Property  | Attribute | Description | Type            | Default     |
+| --------- | --------- | ----------- | --------------- | ----------- |
+| `history` | --        |             | `RouterHistory` | `undefined` |
 
+
+## Dependencies
+
+### Depends on
+
+- [emp-i-molecule](../../molecules/emp-i.molecule)
+- [emp-profile-molecule](../../molecules/emp-profile.molecule)
+- [emp-list-item-molecule](../../molecules/emp-list-item.molecule)
+- [emp-footer-molecule](../../molecules/emp-footer.molecule)
+
+### Graph
+```mermaid
+graph TD;
+  profile-page --> emp-i-molecule
+  profile-page --> emp-profile-molecule
+  profile-page --> emp-list-item-molecule
+  profile-page --> emp-footer-molecule
+  emp-list-item-molecule --> emp-i-molecule
+  style profile-page fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

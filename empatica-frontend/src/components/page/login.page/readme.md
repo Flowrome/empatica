@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property       | Attribute       | Description | Type     | Default                       |
-| -------------- | --------------- | ----------- | -------- | ----------------------------- |
-| `sectionTitle` | `section-title` |             | `string` | `<h2>login.page SECTION</h2>` |
+| Property       | Attribute       | Description | Type            | Default                       |
+| -------------- | --------------- | ----------- | --------------- | ----------------------------- |
+| `history`      | --              |             | `RouterHistory` | `undefined`                   |
+| `sectionTitle` | `section-title` |             | `string`        | `<h2>login.page SECTION</h2>` |
 
 
 ## Dependencies

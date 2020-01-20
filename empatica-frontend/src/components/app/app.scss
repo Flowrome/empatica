@@ -1,4 +1,14 @@
 // app styles
-:host {
+emp-app {
   @include default-font();
+  .spinner-container {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(color(black, tertiary), 0.5);
+    z-index: 9999;
+  }
 }

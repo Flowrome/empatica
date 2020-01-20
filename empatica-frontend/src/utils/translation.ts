@@ -1,4 +1,5 @@
 import { globalStore } from './store';
+import { spinner } from './spinner';
 export class Translation {
   private currentLanguage: string = '';
   private currentJSONTranslation: { [key: string]: any } = {};
@@ -31,9 +32,11 @@ export class Translation {
 
   private reachLanguage(): Promise<any> {
     if (!this.currentJSONTranslation[this.currentLanguage]) {
+      spinner.on();
       return fetch(`../assets/i18n/${this.currentLanguage}.json`)
         .then(data => data.json())
         .then((json: { [key: string]: any }) => {
+          spinner.off();
           this.currentJSONTranslation[this.currentLanguage] = json;
         });
     }

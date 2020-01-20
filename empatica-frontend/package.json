@@ -92,6 +92,7 @@
     "glob-promise": "^3.4.0",
     "ora": "^4.0.2",
     "rollup-plugin-alias": "^1.5.2",
+    "rxjs": "^6.5.4",
     "shelljs": "^0.8.3",
     "wretch": "^1.6.0"
   }

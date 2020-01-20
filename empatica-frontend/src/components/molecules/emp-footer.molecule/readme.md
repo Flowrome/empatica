@@ -10,11 +10,13 @@
 ### Used by
 
  - [home-page](../../page/home.page)
+ - [profile-page](../../page/profile.page)
 
 ### Graph
 ```mermaid
 graph TD;
   home-page --> emp-footer-molecule
+  profile-page --> emp-footer-molecule
   style emp-footer-molecule fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

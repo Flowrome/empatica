@@ -1,31 +1,48 @@
-import { Component, h } from '@stencil/core';
+import { Component, h, Host, State } from '@stencil/core';
 import '@stencil/router';
 import { globalStore } from '../../utils/store';
+import { spinner } from '../../utils/spinner';
 
 @Component({
-  tag: 'fl-app',
+  tag: 'emp-app',
   styleUrl: 'app.scss',
   shadow: false
 })
 export class AppPage {
+  @State() private spinner: boolean;
+
+  constructor() {
+    spinner.$state.subscribe(state => {
+      this.spinner = state;
+    });
+  }
+
   public componentWillLoad() {
     globalStore.init();
+    globalStore.set('lang', 'en');
   }
 
   public render(): any {
     return (
-      <stencil-router>
-        <stencil-route-switch scrollTopOffset={0}>
-          <stencil-route
-            url="/"
-            routeRender={() => <stencil-router-redirect url="/homepage" />}
-            exact={true}
-          ></stencil-route>
-          <stencil-route url="/homepage" component="home-page" exact={true}></stencil-route>
-          <stencil-route url="/login" component="login-page" exact={true}></stencil-route>
-          <stencil-route url="/profile" component="profile-page" exact={true}></stencil-route>
-        </stencil-route-switch>
-      </stencil-router>
+      <Host>
+        {this.spinner && (
+          <div class="spinner-container">
+            <emp-spinner-molecule></emp-spinner-molecule>
+          </div>
+        )}
+        <stencil-router>
+          <stencil-route-switch scrollTopOffset={0}>
+            <stencil-route
+              url="/"
+              routeRender={() => <stencil-router-redirect url="/homepage" />}
+              exact={true}
+            ></stencil-route>
+            <stencil-route url="/homepage" component="home-page" exact={true}></stencil-route>
+            <stencil-route url="/login" component="login-page" exact={true}></stencil-route>
+            <stencil-route url="/profile" component="profile-page" exact={true}></stencil-route>
+          </stencil-route-switch>
+        </stencil-router>
+      </Host>
     );
   }
 }
