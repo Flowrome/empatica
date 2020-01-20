@@ -33,7 +33,6 @@ export class Validator {
   public validate(value: any): boolean {
     let valid: boolean = true;
     this._validations.map(({ check, errorMessage, priority }) => {
-      // console.log(check, value, this[check](value));
       if (!this[check](value) && !this._errors.check) {
         this._errors = { ...this._errors, [check]: { error: errorMessage, priority: priority } };
       } else {

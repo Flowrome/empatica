@@ -1,5 +1,61 @@
 // emp-list-item.molecule styles
 :host,
 emp-list-item-molecule {
-  @include default-font();
+  .emp-list {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: size(18px) size(10px);
+    cursor: pointer;
+    position: relative;
+    background-color: var(--emp-list-bg-color);
+    transition: 0.2s;
+    emp-i-molecule {
+      --i-color: var(--emp-list-icon-left-color);
+      --i-font-size: #{size(18px)};
+      --i-width: #{size(18px)};
+      --i-height: #{size(18px)};
+      &:last-child {
+        --i-color: var(--emp-list-icon-right-color);
+        margin-right: 0;
+        margin-left: auto;
+      }
+    }
+    p {
+      margin-left: size(24px);
+      &.no-icon-left {
+        margin-left: 0;
+      }
+      @include paragraph();
+      color: var(--emp-list-text-color);
+    }
+    .replace {
+      height: size(18px);
+      width: size(18px);
+    }
+    &--centered {
+      emp-i-molecule {
+        &:last-child {
+          margin-right: 0;
+          margin-left: 0;
+        }
+      }
+      p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    &:hover {
+      background-color: var(--emp-list-bg-color-hover);
+      emp-i-molecule {
+        --i-color: var(--emp-list-icon-left-color-hover) !important;
+        &:last-child {
+          --i-color: var(--emp-list-icon-right-color-hover) !important;
+        }
+      }
+      p {
+        color: var(--emp-list-text-color-hover);
+      }
+    }
+  }
 }

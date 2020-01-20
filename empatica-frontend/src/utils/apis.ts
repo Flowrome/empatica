@@ -11,7 +11,7 @@ export interface UserData {
 export class Apis {
   constructor() {}
 
-  public async getUser(userId: string): Promise<UserData> {
+  public async getUser(userId: number): Promise<UserData> {
     const userData: UserData = await wretch(`${environment.baseUrl}/users/${userId}`)
       .get()
       .json(({ id, firstName, lastName, email }) => ({

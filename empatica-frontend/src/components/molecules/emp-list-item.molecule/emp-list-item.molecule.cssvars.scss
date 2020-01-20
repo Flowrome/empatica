@@ -1,3 +1,11 @@
 // emp-list-item.molecule styles
 :root {
+  --emp-list-bg-color: #{color(gray, light)};
+  --emp-list-text-color: #{color(gray, dark)};
+  --emp-list-icon-right-color: #{color(gray, dark)};
+  --emp-list-icon-left-color: #{color(gray, dark)};
+  --emp-list-bg-color-hover: #{color(gray, dark)};
+  --emp-list-text-color-hover: #{color(gray, light)};
+  --emp-list-icon-right-color-hover: #{color(gray, light)};
+  --emp-list-icon-left-color-hover: #{color(gray, light)};
 }

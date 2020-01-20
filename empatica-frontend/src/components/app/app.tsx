@@ -1,5 +1,6 @@
 import { Component, h } from '@stencil/core';
 import '@stencil/router';
+import { globalStore } from '../../utils/store';
 
 @Component({
   tag: 'fl-app',
@@ -7,6 +8,10 @@ import '@stencil/router';
   shadow: false
 })
 export class AppPage {
+  public componentWillLoad() {
+    globalStore.init();
+  }
+
   public render(): any {
     return (
       <stencil-router>

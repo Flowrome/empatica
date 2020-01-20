@@ -2,4 +2,25 @@
 :host,
 profile-page {
   @include default-font();
+  .default-header {
+    background-color: color(primary, blue);
+    img {
+      height: 60%;
+      cursor: pointer;
+    }
+  }
+  ul {
+    border-radius: size(8px);
+    overflow: hidden;
+    emp-list-item-molecule {
+      display: block;
+      border-bottom: 1px solid rgba(color(gray, dark), 0.5);
+      &:hover {
+        border-bottom: 1px solid rgba(color(gray, light), 0.5);
+      }
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
 }

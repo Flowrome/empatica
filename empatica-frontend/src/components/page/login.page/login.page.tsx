@@ -1,6 +1,8 @@
 import { Component, Prop, h, State } from '@stencil/core';
 import { apis } from '../../../utils/apis';
 import { int } from '../../../utils/translation';
+import { RouterHistory } from '@stencil/router';
+import { globalStore } from '../../../utils/store';
 
 @Component({
   tag: 'login-page',
@@ -8,6 +10,7 @@ import { int } from '../../../utils/translation';
   shadow: false
 })
 export class LoginPage {
+  @Prop() public history: RouterHistory;
   @Prop() public sectionTitle: string = <h2>login.page SECTION</h2>;
 
   @State() private username: boolean;
@@ -20,7 +23,10 @@ export class LoginPage {
   private async login(): Promise<void> {
     if (!!this.username && !!this.password) {
       const id = await apis.login();
-      console.log(id);
+      if (id) {
+        globalStore.set('user.id', id);
+        this.history.push('profile');
+      }
     }
   }
 

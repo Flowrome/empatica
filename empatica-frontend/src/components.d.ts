@@ -40,6 +40,9 @@ export namespace Components {
     'value': string;
   }
   interface EmpListItemMolecule {
+    'centeredTitle': boolean;
+    'iconLeft': string;
+    'iconRight': string;
     'text': string;
   }
   interface FlApp {}
@@ -47,12 +50,10 @@ export namespace Components {
     'history': RouterHistory;
   }
   interface LoginPage {
+    'history': RouterHistory;
     'sectionTitle': string;
   }
-  interface ProfilePage {
-    'headerTitle': string;
-    'sectionTitle': string;
-  }
+  interface ProfilePage {}
 }
 
 declare global {
@@ -162,6 +163,9 @@ declare namespace LocalJSX {
     'value'?: string;
   }
   interface EmpListItemMolecule {
+    'centeredTitle'?: boolean;
+    'iconLeft'?: string;
+    'iconRight'?: string;
     'text'?: string;
   }
   interface FlApp {}
@@ -169,12 +173,10 @@ declare namespace LocalJSX {
     'history'?: RouterHistory;
   }
   interface LoginPage {
+    'history'?: RouterHistory;
     'sectionTitle'?: string;
   }
-  interface ProfilePage {
-    'headerTitle'?: string;
-    'sectionTitle'?: string;
-  }
+  interface ProfilePage {}
 
   interface IntrinsicElements {
     'emp-article-molecule': EmpArticleMolecule;
