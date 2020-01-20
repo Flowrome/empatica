@@ -1,4 +1,4 @@
 export const environment = {
   prod: true,
-  baseUrl: 'http://localhost:3000'
+  baseUrl: 'https://empatica-be.herokuapp.com'
 };

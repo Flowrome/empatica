@@ -81,6 +81,8 @@ app.get('/info', function(req, res) {
   });
 });
 
+app.get('/', (req, res) => res.render('page'));
+
 app.post('/login', function(req, res) {
   res.json({
     id: 1
@@ -104,4 +106,4 @@ app.delete('/orders/:id', function(req, res) {
 });
 
 console.log('Server is starting at localhost:3000');
-app.listen(3000);
+app.listen(process.env.PORT || 3000);

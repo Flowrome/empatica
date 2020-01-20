@@ -14,13 +14,14 @@ export class ProfilePage {
   private userId: number;
   private languageMap: { lang: string; label: string; selected?: boolean }[] = [
     { lang: 'it', label: 'PROFILE.LANGUAGES.ITALIAN', selected: true },
-    { lang: 'en', label: 'PROFILE.LANGUAGES.ENGLISH'}
-  ].map(lang => (
-    lang = {
-      ...lang, 
-      selected: globalStore.get('lang') === lang.lang
-    }
-  ));
+    { lang: 'en', label: 'PROFILE.LANGUAGES.ENGLISH' }
+  ].map(
+    lang =>
+      (lang = {
+        ...lang,
+        selected: globalStore.get('lang') === lang.lang
+      })
+  );
 
   @State() private showLanguages: boolean = false;
 
@@ -32,6 +33,7 @@ export class ProfilePage {
     if (this.userId) {
       const userData = await apis.getUser(this.userId);
       if (userData) {
+        console.log(userData);
         globalStore.set('user.data', userData);
       }
     } else {
@@ -62,6 +64,13 @@ export class ProfilePage {
       </header>,
       <main class="main-container">
         <section class="page page--padded container-fluid">
+          <emp-profile-molecule
+            class="block mt-30"
+            profileImage="https://fakeimg.pl/64x64/"
+            name={globalStore.get('user.data').firstName}
+            surname={globalStore.get('user.data').lastName}
+            email={globalStore.get('user.data').email}
+          ></emp-profile-molecule>
           <ul class="mt-30">
             <emp-list-item-molecule text="PROFILE.LIST_ITEM_ORDERS" iconRight="shopping-cart"></emp-list-item-molecule>
             <emp-list-item-molecule text="PROFILE.LIST_ITEM_ADDRESS" iconRight="home"></emp-list-item-molecule>

@@ -45,6 +45,12 @@ export namespace Components {
     'iconRight': string;
     'text': string;
   }
+  interface EmpProfileMolecule {
+    'email': string;
+    'name': string;
+    'profileImage': string;
+    'surname': string;
+  }
   interface FlApp {}
   interface HomePage {
     'history': RouterHistory;
@@ -97,6 +103,12 @@ declare global {
     new (): HTMLEmpListItemMoleculeElement;
   };
 
+  interface HTMLEmpProfileMoleculeElement extends Components.EmpProfileMolecule, HTMLStencilElement {}
+  var HTMLEmpProfileMoleculeElement: {
+    prototype: HTMLEmpProfileMoleculeElement;
+    new (): HTMLEmpProfileMoleculeElement;
+  };
+
   interface HTMLFlAppElement extends Components.FlApp, HTMLStencilElement {}
   var HTMLFlAppElement: {
     prototype: HTMLFlAppElement;
@@ -127,6 +139,7 @@ declare global {
     'emp-i-molecule': HTMLEmpIMoleculeElement;
     'emp-input-molecule': HTMLEmpInputMoleculeElement;
     'emp-list-item-molecule': HTMLEmpListItemMoleculeElement;
+    'emp-profile-molecule': HTMLEmpProfileMoleculeElement;
     'fl-app': HTMLFlAppElement;
     'home-page': HTMLHomePageElement;
     'login-page': HTMLLoginPageElement;
@@ -170,6 +183,12 @@ declare namespace LocalJSX {
     'iconRight'?: string;
     'text'?: string;
   }
+  interface EmpProfileMolecule {
+    'email'?: string;
+    'name'?: string;
+    'profileImage'?: string;
+    'surname'?: string;
+  }
   interface FlApp {}
   interface HomePage {
     'history'?: RouterHistory;
@@ -189,6 +208,7 @@ declare namespace LocalJSX {
     'emp-i-molecule': EmpIMolecule;
     'emp-input-molecule': EmpInputMolecule;
     'emp-list-item-molecule': EmpListItemMolecule;
+    'emp-profile-molecule': EmpProfileMolecule;
     'fl-app': FlApp;
     'home-page': HomePage;
     'login-page': LoginPage;
@@ -208,6 +228,7 @@ declare module "@stencil/core" {
       'emp-i-molecule': LocalJSX.EmpIMolecule & JSXBase.HTMLAttributes<HTMLEmpIMoleculeElement>;
       'emp-input-molecule': LocalJSX.EmpInputMolecule & JSXBase.HTMLAttributes<HTMLEmpInputMoleculeElement>;
       'emp-list-item-molecule': LocalJSX.EmpListItemMolecule & JSXBase.HTMLAttributes<HTMLEmpListItemMoleculeElement>;
+      'emp-profile-molecule': LocalJSX.EmpProfileMolecule & JSXBase.HTMLAttributes<HTMLEmpProfileMoleculeElement>;
       'fl-app': LocalJSX.FlApp & JSXBase.HTMLAttributes<HTMLFlAppElement>;
       'home-page': LocalJSX.HomePage & JSXBase.HTMLAttributes<HTMLHomePageElement>;
       'login-page': LocalJSX.LoginPage & JSXBase.HTMLAttributes<HTMLLoginPageElement>;

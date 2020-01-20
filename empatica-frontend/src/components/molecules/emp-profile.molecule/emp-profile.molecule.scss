@@ -1,0 +1,24 @@
+// emp-profile.molecule styles
+:host,
+emp-profile-molecule {
+  @include default-font();
+  .emp-profile {
+    padding: size(18px) size(10px);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: row wrap;
+    background-color: var(--emp-profile-bg-color);
+    img {
+      border-radius: 50%;
+      width: size(64px);
+      height: size(64px);
+    }
+    p {
+      color: var(--emp-profile-text-color);
+      @include paragraph();
+      width: 100%;
+      margin-top: size(10px);
+    }
+  }
+}
