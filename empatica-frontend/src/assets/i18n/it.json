@@ -34,5 +34,14 @@
       "ITALIAN": "Italiano",
       "SPANISH": "Spagnolo"
     }
+  },
+  "ORDER": {
+    "CARRIER": "Corriere: {{value}}",
+    "TRACKING_NO": "Codice tracking: {{value}}",
+    "STATUS": "Stato: {{value}}",
+    "DELETE": "Elimina",
+    "STATUSES": {
+      "in_transit": "In transito"
+    }
   }
 }

@@ -2,24 +2,6 @@
 :host,
 profile-page {
   @include default-font();
-  .default-header {
-    background-color: color(primary, blue);
-    img {
-      height: 60%;
-      cursor: pointer;
-    }
-    emp-i-molecule {
-      --i-color: #{color(gray, light)};
-      --i-font-size: #{size(24px)};
-      --i-width: #{size(24px)};
-      --i-height: #{size(24px)};
-      margin-left: size(20px);
-      margin-right: 0;
-      &:first-of-type {
-        margin-left: auto;
-      }
-    }
-  }
   emp-profile-molecule {
     border-radius: size(8px);
     overflow: hidden;

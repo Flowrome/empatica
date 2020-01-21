@@ -33,7 +33,6 @@ export class ProfilePage {
     if (this.userId) {
       const userData = await apis.getUser(this.userId);
       if (userData) {
-        console.log(userData);
         globalStore.set('user.data', userData);
       }
     } else {
@@ -72,7 +71,11 @@ export class ProfilePage {
             email={globalStore.get('user.data').email}
           ></emp-profile-molecule>
           <ul class="mt-30">
-            <emp-list-item-molecule text="PROFILE.LIST_ITEM_ORDERS" iconRight="shopping-cart"></emp-list-item-molecule>
+            <emp-list-item-molecule
+              onClick={() => this.history.push('/orders')}
+              text="PROFILE.LIST_ITEM_ORDERS"
+              iconRight="shopping-cart"
+            ></emp-list-item-molecule>
             <emp-list-item-molecule text="PROFILE.LIST_ITEM_ADDRESS" iconRight="home"></emp-list-item-molecule>
             <emp-list-item-molecule text="PROFILE.LIST_ITEM_PAYMENT" iconRight="credit-card"></emp-list-item-molecule>
           </ul>

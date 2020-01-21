@@ -28,7 +28,7 @@
   height: size($header-height);
   width: 100%;
   transition: 0.2s;
-  background-color: color(white, primary);
+  background-color: color(primary, blue);
   &--sticky {
     position: fixed;
     top: 0;
@@ -46,6 +46,21 @@
     height: 100%;
     h1 {
       font-size: size(22px);
+    }
+  }
+  img {
+    height: 60%;
+    cursor: pointer;
+  }
+  emp-i-molecule {
+    --i-color: #{color(gray, light)};
+    --i-font-size: #{size(24px)};
+    --i-width: #{size(24px)};
+    --i-height: #{size(24px)};
+    margin-left: size(20px);
+    margin-right: 0;
+    &:first-of-type {
+      margin-left: auto;
     }
   }
 }

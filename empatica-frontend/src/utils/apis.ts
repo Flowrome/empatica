@@ -7,7 +7,37 @@ export interface UserData {
   firstName: string;
   lastName: string;
   email: string;
+} export interface Tracking {
+  carrier: string;
+  trackingCode: string;
+  status: string;
 }
+
+export interface Item {
+  sku: string;
+  name: string;
+  amount: number;
+}
+
+export interface Discount {
+  name: string;
+  type: string;
+  value: number;
+}
+
+export interface Order {
+  id: number;
+  ref: string;
+  status: string;
+  tracking?: Tracking;
+  items?: Item[];
+  discounts?: Discount[];
+}
+
+export interface UserOrders {
+  orders: Order[];
+}
+
 
 export class Apis {
   constructor() { }
@@ -22,6 +52,15 @@ export class Apis {
         lastName: lastName,
         email: email
       }));
+    spinner.off();
+    return userData;
+  }
+
+  public async getUserOrders(userId: number): Promise<UserOrders> {
+    spinner.on();
+    const userData: UserOrders = await wretch(`${environment.baseUrl}/users/${userId}/orders`)
+      .get()
+      .json();
     spinner.off();
     return userData;
   }

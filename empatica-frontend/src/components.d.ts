@@ -12,6 +12,9 @@ import {
   ValidationError,
 } from './utils/validator';
 import {
+  Order,
+} from './../dist/types/utils/apis';
+import {
   RouterHistory,
 } from '@stencil/router';
 
@@ -24,7 +27,7 @@ export namespace Components {
     'center': boolean;
     'disabled': boolean;
     'full': boolean;
-    'kind': string & 'primary' | 'gray';
+    'kind': string & 'primary' | 'gray' | 'dark';
   }
   interface EmpFooterMolecule {}
   interface EmpIMolecule {
@@ -46,6 +49,9 @@ export namespace Components {
     'iconRight': string;
     'text': string;
   }
+  interface EmpOrderItemMolecule {
+    'order': Order;
+  }
   interface EmpProfileMolecule {
     'email': string;
     'name': string;
@@ -59,6 +65,9 @@ export namespace Components {
   interface LoginPage {
     'history': RouterHistory;
     'sectionTitle': string;
+  }
+  interface OrdersPage {
+    'history': RouterHistory;
   }
   interface ProfilePage {
     'history': RouterHistory;
@@ -110,6 +119,12 @@ declare global {
     new (): HTMLEmpListItemMoleculeElement;
   };
 
+  interface HTMLEmpOrderItemMoleculeElement extends Components.EmpOrderItemMolecule, HTMLStencilElement {}
+  var HTMLEmpOrderItemMoleculeElement: {
+    prototype: HTMLEmpOrderItemMoleculeElement;
+    new (): HTMLEmpOrderItemMoleculeElement;
+  };
+
   interface HTMLEmpProfileMoleculeElement extends Components.EmpProfileMolecule, HTMLStencilElement {}
   var HTMLEmpProfileMoleculeElement: {
     prototype: HTMLEmpProfileMoleculeElement;
@@ -134,6 +149,12 @@ declare global {
     new (): HTMLLoginPageElement;
   };
 
+  interface HTMLOrdersPageElement extends Components.OrdersPage, HTMLStencilElement {}
+  var HTMLOrdersPageElement: {
+    prototype: HTMLOrdersPageElement;
+    new (): HTMLOrdersPageElement;
+  };
+
   interface HTMLProfilePageElement extends Components.ProfilePage, HTMLStencilElement {}
   var HTMLProfilePageElement: {
     prototype: HTMLProfilePageElement;
@@ -147,10 +168,12 @@ declare global {
     'emp-i-molecule': HTMLEmpIMoleculeElement;
     'emp-input-molecule': HTMLEmpInputMoleculeElement;
     'emp-list-item-molecule': HTMLEmpListItemMoleculeElement;
+    'emp-order-item-molecule': HTMLEmpOrderItemMoleculeElement;
     'emp-profile-molecule': HTMLEmpProfileMoleculeElement;
     'emp-spinner-molecule': HTMLEmpSpinnerMoleculeElement;
     'home-page': HTMLHomePageElement;
     'login-page': HTMLLoginPageElement;
+    'orders-page': HTMLOrdersPageElement;
     'profile-page': HTMLProfilePageElement;
   }
 }
@@ -165,7 +188,7 @@ declare namespace LocalJSX {
     'center'?: boolean;
     'disabled'?: boolean;
     'full'?: boolean;
-    'kind'?: string & 'primary' | 'gray';
+    'kind'?: string & 'primary' | 'gray' | 'dark';
   }
   interface EmpFooterMolecule {}
   interface EmpIMolecule {
@@ -192,6 +215,9 @@ declare namespace LocalJSX {
     'iconRight'?: string;
     'text'?: string;
   }
+  interface EmpOrderItemMolecule {
+    'order'?: Order;
+  }
   interface EmpProfileMolecule {
     'email'?: string;
     'name'?: string;
@@ -206,6 +232,9 @@ declare namespace LocalJSX {
     'history'?: RouterHistory;
     'sectionTitle'?: string;
   }
+  interface OrdersPage {
+    'history'?: RouterHistory;
+  }
   interface ProfilePage {
     'history'?: RouterHistory;
   }
@@ -218,10 +247,12 @@ declare namespace LocalJSX {
     'emp-i-molecule': EmpIMolecule;
     'emp-input-molecule': EmpInputMolecule;
     'emp-list-item-molecule': EmpListItemMolecule;
+    'emp-order-item-molecule': EmpOrderItemMolecule;
     'emp-profile-molecule': EmpProfileMolecule;
     'emp-spinner-molecule': EmpSpinnerMolecule;
     'home-page': HomePage;
     'login-page': LoginPage;
+    'orders-page': OrdersPage;
     'profile-page': ProfilePage;
   }
 }
@@ -239,10 +270,12 @@ declare module "@stencil/core" {
       'emp-i-molecule': LocalJSX.EmpIMolecule & JSXBase.HTMLAttributes<HTMLEmpIMoleculeElement>;
       'emp-input-molecule': LocalJSX.EmpInputMolecule & JSXBase.HTMLAttributes<HTMLEmpInputMoleculeElement>;
       'emp-list-item-molecule': LocalJSX.EmpListItemMolecule & JSXBase.HTMLAttributes<HTMLEmpListItemMoleculeElement>;
+      'emp-order-item-molecule': LocalJSX.EmpOrderItemMolecule & JSXBase.HTMLAttributes<HTMLEmpOrderItemMoleculeElement>;
       'emp-profile-molecule': LocalJSX.EmpProfileMolecule & JSXBase.HTMLAttributes<HTMLEmpProfileMoleculeElement>;
       'emp-spinner-molecule': LocalJSX.EmpSpinnerMolecule & JSXBase.HTMLAttributes<HTMLEmpSpinnerMoleculeElement>;
       'home-page': LocalJSX.HomePage & JSXBase.HTMLAttributes<HTMLHomePageElement>;
       'login-page': LocalJSX.LoginPage & JSXBase.HTMLAttributes<HTMLLoginPageElement>;
+      'orders-page': LocalJSX.OrdersPage & JSXBase.HTMLAttributes<HTMLOrdersPageElement>;
       'profile-page': LocalJSX.ProfilePage & JSXBase.HTMLAttributes<HTMLProfilePageElement>;
     }
   }

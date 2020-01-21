@@ -6,7 +6,6 @@ export class Store {
 
     public init() {
         window.onbeforeunload = () => {
-            console.log(JSON.stringify(this.store));
             localStorage.setItem(this.storeKey, JSON.stringify(this.store));
         };
         this.store = localStorage.getItem(this.storeKey)?.length > 0 ? JSON.parse(localStorage.getItem(this.storeKey)) : {};

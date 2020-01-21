@@ -63,6 +63,19 @@ emp-button-molecule {
         }
       }
     }
+    &--dark {
+      background-color: transparent;
+      color: var(--emp-button-gray-dark-color);
+      border-color: var(--emp-button-gray-dark-color);
+      &:hover,
+      &:active {
+        &:enabled {
+          background-color: var(--emp-button-gray-dark-color);
+          color: var(--emp-button-gray-light-color);
+          border-color: var(--emp-button-gray-dark-color);
+        }
+      }
+    }
     &:disabled {
       opacity: 0.6;
       cursor: default;

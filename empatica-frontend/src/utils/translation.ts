@@ -8,12 +8,16 @@ export class Translation {
     this.language = globalStore.get('lang') || lang;
   }
 
-  public init(element?: HTMLElement | Document | ShadowRoot): void {
-    this.insertTranslation(element);
+  public async init(element?: HTMLElement | Document | ShadowRoot): Promise<void> {
+    await this.insertTranslation(element);
   }
 
-  private async translate(placeholder: string): Promise<string> {
+  private async translate(placeholder: string, values?: { [key: string]: any }): Promise<string> {
     await this.reachLanguage();
+    return this.instant(placeholder, values);
+  }
+
+  public instant(placeholder: string, values?: { [key: string]: any }): string {
     let toReturn = placeholder;
     if (placeholder.indexOf('.')) {
       const objectPath: string[] = placeholder.split('.');
@@ -26,6 +30,17 @@ export class Translation {
       toReturn = this.currentJSONTranslation[this.currentLanguage][placeholder]
         ? this.currentJSONTranslation[this.currentLanguage][placeholder]
         : placeholder;
+    }
+    if (values) {
+      Object.keys(values).map(key => {
+        const value = values[key];
+        const reg = new RegExp(`{{( )?${key}( )?}}`, 'gm');
+        if (reg.test(toReturn)) {
+          toReturn.match(reg).map(match => {
+            toReturn = toReturn.replace(new RegExp(`${match}`, 'g'), value);
+          });
+        }
+      });
     }
     return toReturn;
   }
@@ -43,12 +58,11 @@ export class Translation {
     return Promise.resolve();
   }
 
-  private insertTranslation(elem: any = document): void {
-    elem.querySelectorAll('[data-translate]').forEach(element => {
+  private async insertTranslation(elem: any = document): Promise<void> {
+    await elem.querySelectorAll('[data-translate]').forEach(async element => {
+      const toReplace = element['data-translate-value'];
       const { innerHTML } = element;
-      this.translate(innerHTML).then(trad => {
-        element.innerHTML = trad;
-      });
+      element.innerHTML = await this.translate(innerHTML, toReplace);
     });
   }
 

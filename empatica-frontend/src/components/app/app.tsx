@@ -19,7 +19,9 @@ export class AppPage {
 
   public componentWillLoad() {
     globalStore.init();
-    globalStore.set('lang', 'en');
+    if (!globalStore.get('lang')) {
+      globalStore.set('lang', 'en');
+    }
   }
 
   public render(): any {
@@ -40,6 +42,7 @@ export class AppPage {
             <stencil-route url="/homepage" component="home-page" exact={true}></stencil-route>
             <stencil-route url="/login" component="login-page" exact={true}></stencil-route>
             <stencil-route url="/profile" component="profile-page" exact={true}></stencil-route>
+            <stencil-route url="/orders" component="orders-page" exact={true}></stencil-route>
           </stencil-route-switch>
         </stencil-router>
       </Host>

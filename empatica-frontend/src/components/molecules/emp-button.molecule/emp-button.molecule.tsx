@@ -6,7 +6,7 @@ import { Component, Prop, h } from '@stencil/core';
   shadow: true
 })
 export class EmpButtonMolecule {
-  @Prop() public kind: string & 'primary' | 'gray' = 'primary';
+  @Prop() public kind: string & 'primary' | 'gray' | 'dark' = 'primary';
   @Prop() public center: boolean = true;
   @Prop() public full: boolean = false;
   @Prop() public disabled: boolean;
@@ -17,7 +17,8 @@ export class EmpButtonMolecule {
       'emp-btn--centered': this.center,
       'emp-btn--full': this.full,
       'emp-btn--primary': this.kind === 'primary',
-      'emp-btn--gray': this.kind === 'gray'
+      'emp-btn--gray': this.kind === 'gray',
+      'emp-btn--dark': this.kind === 'dark'
     };
     return (
       <button disabled={this.disabled} class={classes}>

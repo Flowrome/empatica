@@ -56,27 +56,11 @@ home-page {
     }
   }
   .default-header {
-    background-color: color(primary, blue);
     &--hidden {
       margin-top: -#{size($header-height)};
     }
     &--transparent {
       background-color: transparent;
-    }
-    img {
-      height: 60%;
-      cursor: pointer;
-    }
-    emp-i-molecule {
-      --i-color: #{color(gray, light)};
-      --i-font-size: #{size(24px)};
-      --i-width: #{size(24px)};
-      --i-height: #{size(24px)};
-      margin-left: size(20px);
-      margin-right: 0;
-      &:first-of-type {
-        margin-left: auto;
-      }
     }
   }
   .emp-logo {
