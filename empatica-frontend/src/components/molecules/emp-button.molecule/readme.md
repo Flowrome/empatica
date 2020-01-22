@@ -7,24 +7,26 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type                  | Default     |
-| ---------- | ---------- | ----------- | --------------------- | ----------- |
-| `center`   | `center`   |             | `boolean`             | `true`      |
-| `disabled` | `disabled` |             | `boolean`             | `undefined` |
-| `full`     | `full`     |             | `boolean`             | `false`     |
-| `kind`     | `kind`     |             | `"gray" \| "primary"` | `'primary'` |
+| Property   | Attribute  | Description | Type                            | Default     |
+| ---------- | ---------- | ----------- | ------------------------------- | ----------- |
+| `center`   | `center`   |             | `boolean`                       | `true`      |
+| `disabled` | `disabled` |             | `boolean`                       | `undefined` |
+| `full`     | `full`     |             | `boolean`                       | `false`     |
+| `kind`     | `kind`     |             | `"dark" \| "gray" \| "primary"` | `'primary'` |
 
 
 ## Dependencies
 
 ### Used by
 
+ - [emp-order-item-molecule](../emp-order-item.molecule)
  - [home-page](../../page/home.page)
  - [login-page](../../page/login.page)
 
 ### Graph
 ```mermaid
 graph TD;
+  emp-order-item-molecule --> emp-button-molecule
   home-page --> emp-button-molecule
   login-page --> emp-button-molecule
   style emp-button-molecule fill:#f9f,stroke:#333,stroke-width:4px

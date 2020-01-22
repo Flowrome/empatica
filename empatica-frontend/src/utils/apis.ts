@@ -65,6 +65,13 @@ export class Apis {
     return userData;
   }
 
+  public async deleteUserOrder(orderId: number): Promise<void> {
+    spinner.on();
+    await wretch(`${environment.baseUrl}/orders/${orderId}/`)
+      .delete();
+    spinner.off();
+  }
+
   public async login(): Promise<any> {
     spinner.on();
     const id = await wretch(`${environment.baseUrl}/login`)

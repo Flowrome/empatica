@@ -2,4 +2,10 @@
 :host,
 orders-page {
   @include default-font();
+  ul {
+    padding-top: size(24px);
+    li {
+      padding: size(12px) 0;
+    } 
+  }
 }

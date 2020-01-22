@@ -34,5 +34,16 @@
       "ITALIAN": "Italian",
       "SPANISH": "Spanish"
     }
+  },
+  "ORDER": {
+    "CARRIER": "Carrier: {{value}}",
+    "TRACKING_NO": "Tracking number: {{value}}",
+    "STATUS": "Status: {{value}}",
+    "DELETE": "Delete",
+    "EDIT": "Edit",
+    "SHOW_DETAIL": "Detail",
+    "STATUSES": {
+      "in_transit": "In transit"
+    }
   }
 }

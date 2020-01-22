@@ -8,6 +8,7 @@ app.use(function(req, res, next) {
     'Access-Control-Allow-Headers',
     'Origin, X-Requested-With, Content-Type, Accept'
   );
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
   next();
 });
 
@@ -98,10 +99,18 @@ app.get('/users/:id/orders', function(req, res) {
 });
 
 app.delete('/orders/:id', function(req, res) {
+  userOrders = {
+    orders: [
+      ...userOrders.orders.filter(
+        order => order.id.toString() !== req.params['id'].toString()
+      )
+    ]
+  };
   res.json({
     orderId: +req.params['id'],
     status: 'cancelled',
-    order: orders[+req.params['id']]
+    order: orders[+req.params['id']],
+    newOrders: userOrders
   });
 });
 

@@ -40,6 +40,8 @@
     "TRACKING_NO": "Codice tracking: {{value}}",
     "STATUS": "Stato: {{value}}",
     "DELETE": "Elimina",
+    "EDIT": "Modifica",
+    "SHOW_DETAIL": "Dettaglio",
     "STATUSES": {
       "in_transit": "In transito"
     }

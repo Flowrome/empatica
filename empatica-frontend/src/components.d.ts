@@ -13,7 +13,7 @@ import {
 } from './utils/validator';
 import {
   Order,
-} from './../dist/types/utils/apis';
+} from './utils/apis';
 import {
   RouterHistory,
 } from '@stencil/router';
@@ -216,6 +216,7 @@ declare namespace LocalJSX {
     'text'?: string;
   }
   interface EmpOrderItemMolecule {
+    'onDelete'?: (event: CustomEvent<number>) => void;
     'order'?: Order;
   }
   interface EmpProfileMolecule {

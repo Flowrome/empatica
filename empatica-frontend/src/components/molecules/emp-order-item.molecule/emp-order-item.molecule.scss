@@ -2,4 +2,56 @@
 :host,
 emp-order-item-molecule {
   @include default-font();
+  .emp-order {
+    border-radius: size(8px);
+    background-color: var(--emp-order-bg-color);
+    overflow: hidden;
+    .order-header {
+      .first-row,
+      .second-row,
+      .button-container {
+        padding: size(10px);
+        border-bottom: 1px solid var(--emp-order-divider-color);
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+      .title {
+        @include subtitle();
+      }
+      .tracking {
+        @include paragraph();
+        margin-bottom: size(10px);
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+      .button-container {
+        display: flex;
+        flex-flow: row nowrap;
+        emp-button-molecule {
+          &:first-child {
+            margin-left: 0;
+          }
+          &:nth-child(2) {
+            margin-left: auto;
+            margin-right: 0;
+          }
+          &:last-child {
+            margin-left: size(12px);
+          }
+        }
+        &--no-first {
+          emp-button-molecule {
+            &:first-child {
+              margin-left: auto;
+              margin-right: 0;
+            }
+          }
+        }
+      }
+    }
+    .order-body {
+    }
+  }
 }

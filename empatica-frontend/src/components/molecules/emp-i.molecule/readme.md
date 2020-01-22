@@ -21,6 +21,7 @@
  - [emp-input-molecule](../emp-input.molecule)
  - [emp-list-item-molecule](../emp-list-item.molecule)
  - [home-page](../../page/home.page)
+ - [orders-page](../../page/orders.page)
  - [profile-page](../../page/profile.page)
 
 ### Graph
@@ -29,6 +30,7 @@ graph TD;
   emp-input-molecule --> emp-i-molecule
   emp-list-item-molecule --> emp-i-molecule
   home-page --> emp-i-molecule
+  orders-page --> emp-i-molecule
   profile-page --> emp-i-molecule
   style emp-i-molecule fill:#f9f,stroke:#333,stroke-width:4px
 ```
