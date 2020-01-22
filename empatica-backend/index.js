@@ -94,6 +94,11 @@ app.get('/users/:id', function(req, res) {
   res.json(users[+req.params['id']]);
 });
 
+app.get('/reset', function(req, res) {
+  userOrders = { orders: [orders[1], orders[2]] };
+  res.send('OK');
+});
+
 app.get('/users/:id/orders', function(req, res) {
   res.json(userOrders);
 });

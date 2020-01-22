@@ -12,6 +12,13 @@
 | `order`  | --        |             | `Order` | `undefined` |
 
 
+## Events
+
+| Event    | Description | Type                  |
+| -------- | ----------- | --------------------- |
+| `delete` |             | `CustomEvent<number>` |
+
+
 ## Dependencies
 
 ### Used by
