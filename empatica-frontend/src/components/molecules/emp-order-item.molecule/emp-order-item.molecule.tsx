@@ -33,27 +33,37 @@ export class EmpOrderItemMolecule {
           <div class="first-row">
             <p class="title">{this.order.ref}</p>
           </div>
-          {this.order.tracking && (
-            <div class="second-row">
-              {this.order.tracking && (
-                <div class="tracking-info">
-                  <p class="tracking" data-translate data-translate-value={{ value: this.order.tracking.carrier }}>
-                    ORDER.CARRIER
-                  </p>
-                  <p class="tracking" data-translate data-translate-value={{ value: this.order.tracking.trackingCode }}>
-                    ORDER.TRACKING_NO
-                  </p>
-                  <p
-                    class="tracking"
-                    data-translate
-                    data-translate-value={{ value: int.instant(`ORDER.STATUSES.${this.order.tracking.status}`) }}
-                  >
-                    ORDER.STATUS
-                  </p>
-                </div>
+          <div class="second-row">
+            <div class="tracking-info">
+              <p class="tracking" data-translate data-translate-value={{ value: this.order.status }}>
+                ORDER.PAID
+              </p>
+              {!this.order.tracking && (
+                <p class="tracking" data-translate>
+                  ORDER.NO_VALUE
+                </p>
+              )}
+              {this.order.tracking && this.order.tracking.carrier && (
+                <p class="tracking" data-translate data-translate-value={{ value: this.order.tracking.carrier }}>
+                  ORDER.CARRIER
+                </p>
+              )}
+              {this.order.tracking && this.order.tracking.trackingCode && (
+                <p class="tracking" data-translate data-translate-value={{ value: this.order.tracking.trackingCode }}>
+                  ORDER.TRACKING_NO
+                </p>
+              )}
+              {this.order.tracking && this.order.tracking.status && (
+                <p
+                  class="tracking"
+                  data-translate
+                  data-translate-value={{ value: int.instant(`ORDER.STATUSES.${this.order.tracking.status}`) }}
+                >
+                  ORDER.STATUS
+                </p>
               )}
             </div>
-          )}
+          </div>
           <div class={{ 'button-container': true, 'button-container--no-first': !!this.order.tracking }}>
             {!this.order.tracking && (
               <emp-button-molecule kind="dark" onClick={() => this.deleteOrder()} data-translate>

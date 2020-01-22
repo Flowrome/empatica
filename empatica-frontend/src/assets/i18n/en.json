@@ -36,6 +36,8 @@
     }
   },
   "ORDER": {
+    "NO_VALUE": "Confirmation pending",
+    "PAID": "Payment status: {{value}}",
     "CARRIER": "Carrier: {{value}}",
     "TRACKING_NO": "Tracking number: {{value}}",
     "STATUS": "Status: {{value}}",

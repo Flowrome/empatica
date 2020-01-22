@@ -36,6 +36,8 @@
     }
   },
   "ORDER": {
+    "NO_VALUE": "In attesa di conferma",
+    "PAID": "Stato pagamento: {{value}}",
     "CARRIER": "Corriere: {{value}}",
     "TRACKING_NO": "Codice tracking: {{value}}",
     "STATUS": "Stato: {{value}}",
