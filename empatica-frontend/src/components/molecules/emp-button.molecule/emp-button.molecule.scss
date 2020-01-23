@@ -21,6 +21,16 @@ emp-button-molecule {
     &--full {
       width: 100%;
     }
+    &--full-on-mobile {
+      @include mq-breakpoint-s() {
+        width: 100%;
+      }
+    }
+    &--full-on-tablet-pt {
+      @include mq-breakpoint-m() {
+        width: 100%;
+      }
+    }
     &::after {
       content: '';
       position: absolute;

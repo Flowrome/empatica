@@ -49,9 +49,30 @@ emp-order-item-molecule {
             }
           }
         }
+        @include mq-breakpoint-s() {
+          display: block;
+          emp-button-molecule {
+            display: block;
+            margin: 0;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            margin-bottom: size(12px);
+          }
+        }
       }
     }
     .order-body {
+      max-height: 0;
+      height: auto;
+      transition: 0.3s;
+      overflow: hidden;
+    }
+    &--open {
+      .order-body {
+        max-height: 120vh;
+        overflow-y: auto;
+        padding: size(10px);
+      }
     }
   }
 }

@@ -27,6 +27,8 @@ export namespace Components {
     'center': boolean;
     'disabled': boolean;
     'full': boolean;
+    'fullOnMobile': boolean;
+    'fullOnTabletPortrait': boolean;
     'kind': string & 'primary' | 'gray' | 'dark';
   }
   interface EmpFooterMolecule {}
@@ -188,6 +190,8 @@ declare namespace LocalJSX {
     'center'?: boolean;
     'disabled'?: boolean;
     'full'?: boolean;
+    'fullOnMobile'?: boolean;
+    'fullOnTabletPortrait'?: boolean;
     'kind'?: string & 'primary' | 'gray' | 'dark';
   }
   interface EmpFooterMolecule {}

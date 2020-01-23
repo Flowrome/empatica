@@ -104,28 +104,3 @@
 .center {
   margin: 0 auto;
 }
-
-* {
-  [data-mobile] {
-    display: none;
-  }
-  [data-desktop] {
-    display: block;
-  }
-  @include mq-breakpoint-s {
-    [data-mobile] {
-      display: block;
-    }
-    [data-desktop] {
-      display: none;
-    }
-  }
-  @include mq-breakpoint-m {
-    [data-mobile] {
-      display: block;
-    }
-    [data-desktop] {
-      display: none;
-    }
-  }
-}

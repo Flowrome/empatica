@@ -38,10 +38,12 @@ home-page {
       @include mq-breakpoint-s {
         display: flex;
         justify-content: center;
+        margin-top: 50px;
       }
       @include mq-breakpoint-m {
         display: flex;
         justify-content: center;
+        margin-top: 50px;
       }
     }
   }
