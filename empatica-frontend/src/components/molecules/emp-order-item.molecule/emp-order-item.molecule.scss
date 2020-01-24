@@ -7,6 +7,7 @@ emp-order-item-molecule {
     background-color: var(--emp-order-bg-color);
     overflow: hidden;
     .order-header {
+      color: var(--emp-order-text-color);
       .first-row,
       .second-row,
       .button-container {
@@ -66,12 +67,46 @@ emp-order-item-molecule {
       height: auto;
       transition: 0.3s;
       overflow: hidden;
+      .order-discount-row {
+        > p {
+          @include subtitle();
+          color: var(--emp-order-text-color);
+          padding: size(10px);
+          padding-bottom: 0;
+        }
+        .discount {
+          display: flex;
+          padding: size(10px);
+          justify-content: flex-start;
+          align-items: center;
+          border-bottom: 1px solid var(--emp-order-divider-color);
+          &:last-child {
+            border-bottom: none;
+          }
+          p {
+            @include paragraph();
+            color: var(--emp-order-text-color);
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            &.name {
+              max-width: 80%;
+            }
+            &.amount {
+              max-width: 20%;
+              margin-right: 0;
+              margin-left: auto;
+            }
+          }
+        }
+      }
+      .order-item-row {
+      }
     }
     &--open {
       .order-body {
         max-height: 120vh;
         overflow-y: auto;
-        padding: size(10px);
       }
     }
   }

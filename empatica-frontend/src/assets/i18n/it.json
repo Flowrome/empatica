@@ -46,6 +46,13 @@
     "SHOW_DETAIL": "Dettaglio",
     "STATUSES": {
       "in_transit": "In transito"
+    },
+    "DISCOUNT": {
+      "DISCOUNTS": "Sconti:",
+      "TYPE": {
+        "percent": "{{value}} %",
+        "amount": "{{value}} €"
+      }
     }
   }
 }

@@ -1,5 +1,6 @@
 // emp-order-item.molecule styles
 :root {
-    --emp-order-bg-color: #{color(gray, light)};
-    --emp-order-divider-color: #{rgba(color(gray, dark), 0.4)};
+  --emp-order-bg-color: #{color(gray, light)};
+  --emp-order-divider-color: #{rgba(color(gray, dark), 0.4)};
+  --emp-order-text-color: #{color(black, tertiary)};
 }

@@ -7,12 +7,14 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type                            | Default     |
-| ---------- | ---------- | ----------- | ------------------------------- | ----------- |
-| `center`   | `center`   |             | `boolean`                       | `true`      |
-| `disabled` | `disabled` |             | `boolean`                       | `undefined` |
-| `full`     | `full`     |             | `boolean`                       | `false`     |
-| `kind`     | `kind`     |             | `"dark" \| "gray" \| "primary"` | `'primary'` |
+| Property               | Attribute                 | Description | Type                            | Default     |
+| ---------------------- | ------------------------- | ----------- | ------------------------------- | ----------- |
+| `center`               | `center`                  |             | `boolean`                       | `true`      |
+| `disabled`             | `disabled`                |             | `boolean`                       | `undefined` |
+| `full`                 | `full`                    |             | `boolean`                       | `false`     |
+| `fullOnMobile`         | `full-on-mobile`          |             | `boolean`                       | `false`     |
+| `fullOnTabletPortrait` | `full-on-tablet-portrait` |             | `boolean`                       | `false`     |
+| `kind`                 | `kind`                    |             | `"dark" \| "gray" \| "primary"` | `'primary'` |
 
 
 ## Dependencies
