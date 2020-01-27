@@ -48,7 +48,7 @@ export class HomePage {
             <h1 class="title mb-40" data-translate>
               HOMEPAGE.HERO.TITLE
             </h1>
-            <emp-button-molecule fullOnMobile={true} class="mb-30" kind="gray" data-translate>
+            <emp-button-molecule class="mb-30" kind="gray" data-translate>
               HOMEPAGE.HERO.BUTTON_TEXT
             </emp-button-molecule>
             <p class="paragraph mb-90" data-translate>

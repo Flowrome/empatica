@@ -65,6 +65,18 @@ home-page {
       background-color: transparent;
     }
   }
+  emp-article-molecule {
+    emp-button-molecule {
+      @include mq-breakpoint-s() {
+        display: block;
+        margin-top: size(50px);
+      }
+      @include mq-breakpoint-m() {
+        display: block;
+        margin-top: size(50px);
+      }
+    }
+  }
   .emp-logo {
     @include mq-breakpoint-m() {
       margin: 0 auto 50px auto;
